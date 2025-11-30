@@ -48,7 +48,7 @@
                         },
                         blob: {
                             '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -30px) scale(1.1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         },
@@ -133,12 +133,12 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.1);
         }
 
-        /* CLICK ANIMATION */
-        .glass-card:active, button:active, a.px-5:active {
+        /* Loại bỏ CLICK ANIMATION (Scale Down/Active) */
+        /* .glass-card:active, button:active, a.px-5:active {
             transform: scale(0.98);
-        }
+        } */
 
-        /* Ripple Animation CSS */
+        /* Ripple Animation CSS (giữ lại CSS nhưng xóa JS trigger) */
         .ripple {
             position: absolute;
             border-radius: 50%;
@@ -249,7 +249,7 @@
                 <!-- Left: Bio -->
                 <div class="glass-card p-8 rounded-[2rem] reveal space-y-8 border-t-4 border-t-primary/50">
                     <!-- Profile Image -->
-                    <div class="relative w-64 h-64 mx-auto mb-10 group cursor-pointer">
+                    <div class="relative w-64 h-64 mx-auto mb-10 group cursor-pointer reveal delay-100">
                         <!-- Glow effect behind image -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full blur-[60px] opacity-40 group-hover:opacity-70 transition duration-500 animate-pulse"></div>
                         
@@ -261,7 +261,7 @@
                         </div>
                     </div>
 
-                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-4 pb-4 border-b border-white/5">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-4 pb-4 border-b border-white/5 reveal delay-100">
                         <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-blue-500/20 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(0,240,255,0.2)]">
                             <i class="fas fa-id-card"></i>
                         </div>
@@ -271,7 +271,7 @@
                     <!-- Info Grid Enhanced (Đã bỏ Status Online) -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <!-- Item 1: Họ tên -->
-                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-primary/5 hover:border-primary/40">
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-primary/5 hover:border-primary/40 reveal delay-100">
                             <div class="flex items-center gap-3 mb-2">
                                 <i class="fas fa-user text-primary text-xl"></i>
                                 <span class="font-bold text-gray-400 text-xs uppercase tracking-wider">Họ và tên</span>
@@ -280,7 +280,7 @@
                         </div>
 
                         <!-- Item 2: Ngày sinh -->
-                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-accent/5 hover:border-accent/40">
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-accent/5 hover:border-accent/40 reveal delay-200">
                             <div class="flex items-center gap-3 mb-2">
                                 <i class="fas fa-birthday-cake text-accent text-xl"></i>
                                 <span class="font-bold text-gray-400 text-xs uppercase tracking-wider">Ngày sinh</span>
@@ -289,7 +289,7 @@
                         </div>
 
                         <!-- Item 3: MSSV -->
-                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-success/5 hover:border-success/40">
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-success/5 hover:border-success/40 reveal delay-300">
                             <div class="flex items-center gap-3 mb-2">
                                 <i class="fas fa-fingerprint text-success text-xl"></i>
                                 <span class="font-bold text-gray-400 text-xs uppercase tracking-wider">Mã sinh viên</span>
@@ -298,7 +298,7 @@
                         </div>
 
                         <!-- Item 4: Khóa học -->
-                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-secondary/5 hover:border-secondary/40">
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-secondary/5 hover:border-secondary/40 reveal delay-400">
                             <div class="flex items-center gap-3 mb-2">
                                 <i class="fas fa-layer-group text-secondary text-xl"></i>
                                 <span class="font-bold text-gray-400 text-xs uppercase tracking-wider">Khóa học</span>
@@ -309,18 +309,18 @@
                 </div>
 
                 <!-- Right: Education & Skills -->
-                <div class="space-y-8 reveal delay-100">
+                <div class="space-y-8 reveal delay-200">
                     <!-- Education Card (Đã bỏ tích xanh) -->
                     <div class="glass-card p-8 rounded-[2rem] relative group border-t-4 border-t-secondary/50">
                         <!-- FPT Logo Hero -->
-                        <div class="mb-10 flex justify-center relative">
+                        <div class="mb-10 flex justify-center relative reveal delay-200">
                             <div class="absolute inset-0 bg-orange-500 blur-[80px] opacity-20 rounded-full animate-pulse"></div>
                             <div class="bg-white p-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform group-hover:scale-105 transition duration-500 border border-white/20 relative z-10">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" alt="Logo FPT Polytechnic" class="h-20 w-auto object-contain">
                             </div>
                         </div>
 
-                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-4 pb-4 border-b border-white/5">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-4 pb-4 border-b border-white/5 reveal delay-200">
                             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.2)]">
                                 <i class="fas fa-university"></i>
                             </div>
@@ -329,21 +329,21 @@
                         
                         <!-- Education List -->
                         <div class="space-y-4">
-                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-orange-500/40 hover:bg-orange-500/5">
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-orange-500/40 hover:bg-orange-500/5 reveal delay-300">
                                 <div class="flex justify-between items-center mb-1">
                                     <span class="text-xs text-orange-400 font-bold uppercase tracking-wider">Trường đào tạo</span>
                                 </div>
                                 <div class="text-lg font-bold text-white">FPT Polytechnic Tây Nguyên</div>
                             </div>
 
-                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-blue-500/40 hover:bg-blue-500/5">
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-blue-500/40 hover:bg-blue-500/5 reveal delay-400">
                                 <div class="flex justify-between items-center mb-1">
                                     <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">Chuyên ngành</span>
                                 </div>
                                 <div class="text-lg font-bold text-white">Lập trình ứng dụng AI</div>
                             </div>
 
-                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/40 hover:bg-purple-500/5">
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/40 hover:bg-purple-500/5 reveal delay-500">
                                 <div class="flex justify-between items-center mb-1">
                                     <span class="text-xs text-purple-400 font-bold uppercase tracking-wider">Triết lý</span>
                                 </div>
@@ -353,7 +353,7 @@
                     </div>
 
                     <!-- Skills Card -->
-                    <div class="glass-card p-8 rounded-[2rem] mt-8 border-t-4 border-t-success/50">
+                    <div class="glass-card p-8 rounded-[2rem] mt-8 border-t-4 border-t-success/50 reveal delay-300">
                         <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-4 pb-4 border-b border-white/5">
                             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-success/20 to-emerald-500/20 flex items-center justify-center text-success shadow-[0_0_15px_rgba(0,255,148,0.1)]">
                                 <i class="fas fa-laptop-code"></i>
@@ -363,7 +363,7 @@
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <!-- Tech Item 1 -->
-                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-primary/10 hover:border-primary/30">
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-primary/10 hover:border-primary/30 reveal delay-400">
                                 <div class="flex items-center gap-3 mb-2">
                                     <i class="fab fa-python text-yellow-400 text-xl"></i>
                                     <span class="font-bold text-white">Ngôn ngữ</span>
@@ -372,7 +372,7 @@
                             </div>
 
                             <!-- Tech Item 2 -->
-                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-secondary/10 hover:border-secondary/30">
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-secondary/10 hover:border-secondary/30 reveal delay-500">
                                 <div class="flex items-center gap-3 mb-2">
                                     <i class="fas fa-brain text-secondary text-xl"></i>
                                     <span class="font-bold text-white">AI Core</span>
@@ -381,7 +381,7 @@
                             </div>
 
                             <!-- Tech Item 3 -->
-                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-blue-500/10 hover:border-blue-500/30">
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-blue-500/10 hover:border-blue-500/30 reveal delay-500">
                                 <div class="flex items-center gap-3 mb-2">
                                     <i class="fas fa-database text-blue-400 text-xl"></i>
                                     <span class="font-bold text-white">Dữ liệu</span>
@@ -390,7 +390,7 @@
                             </div>
 
                             <!-- Tech Item 4 -->
-                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-white/10 hover:border-white/30">
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-white/10 hover:border-white/30 reveal delay-500">
                                 <div class="flex items-center gap-3 mb-2">
                                     <i class="fas fa-tools text-gray-300 text-xl"></i>
                                     <span class="font-bold text-white">Công cụ</span>
@@ -433,30 +433,7 @@
         });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Add ripple effect listener
-        document.addEventListener('click', function(e) {
-            const target = e.target.closest('.glass-card, button, a');
-            if (target) {
-                const circle = document.createElement('span');
-                const diameter = Math.max(target.clientWidth, target.clientHeight);
-                const radius = diameter / 2;
-                
-                const rect = target.getBoundingClientRect();
-                circle.style.width = circle.style.height = `${diameter}px`;
-                circle.style.left = `${e.clientX - rect.left - radius}px`;
-                circle.style.top = `${e.clientY - rect.top - radius}px`;
-                circle.classList.add('ripple');
-                
-                const ripple = target.getElementsByClassName('ripple')[0];
-                if (ripple) {
-                    ripple.remove();
-                }
-                
-                target.appendChild(circle);
-            }
-        });
-
-        // Spotlight Logic for Cards
+        // Spotlight Logic for Cards (Chỉ dùng hiệu ứng hover, không có click)
         document.querySelectorAll('.glass-card').forEach(card => {
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
