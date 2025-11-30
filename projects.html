@@ -86,7 +86,6 @@
             -webkit-mask-image: linear-gradient(to bottom, transparent, 5%, black, 95%, transparent);
         }
         
-        /* FIX: Sửa lại hiệu ứng xuất hiện (Reveal) sử dụng Transition thay vì Keyframes để tránh lỗi */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -97,7 +96,7 @@
             transform: translateY(0);
         }
 
-        /* Staggered Delay classes for smoother entrance */
+        /* Staggered Delay classes */
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
@@ -128,6 +127,7 @@
         <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
             <a href="about.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Giới thiệu</a>
             <span class="px-4 py-1.5 text-sm font-medium text-white bg-primary/20 rounded-full cursor-default border border-primary/20 shadow-[0_0_10px_rgba(102,224,255,0.3)]">Dự án</span>
+            <a href="experience.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Kinh nghiệm</a>
         </div>
         <a href="index.html#contact" class="hidden md:block bg-white text-black hover:bg-primary hover:text-black transition px-5 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-primary/50 transform hover:-translate-y-0.5 active:scale-95">
             Hợp tác
