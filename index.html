@@ -195,9 +195,9 @@
         
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
+            <!-- Đã cập nhật link sang about.html -->
             <a href="about.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Giới thiệu</a>
-            <!-- Đã cập nhật link sang projects.html -->
-            <a href="projects.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Dự án</a>
+            <a href="#projects" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Dự án</a>
             <a href="#experience" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Kinh nghiệm</a>
         </div>
 
@@ -215,8 +215,7 @@
     <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 md:hidden transition-all">
         <button class="absolute top-8 right-8 text-white text-2xl" onclick="document.getElementById('mobile-menu').classList.add('hidden')">&times;</button>
         <a href="about.html" class="text-2xl font-bold">Giới thiệu</a>
-        <!-- Đã cập nhật link mobile -->
-        <a href="projects.html" class="text-2xl font-bold">Dự án</a>
+        <a href="#projects" class="text-2xl font-bold" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Dự án</a>
         <a href="#experience" class="text-2xl font-bold" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Kinh nghiệm</a>
         <a href="#contact" class="text-2xl font-bold text-primary" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Liên hệ</a>
     </div>
@@ -283,6 +282,7 @@
 
     <!-- PROJECTS SECTION (Floating Glass Cards) -->
     <section id="projects" class="py-24 relative z-10">
+        <!-- ... (Giữ nguyên nội dung phần Projects) ... -->
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between mb-16 reveal">
                 <div>
@@ -362,92 +362,166 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION (Floating Dots) -->
-    <section id="experience" class="py-24 bg-black/20 backdrop-blur-sm relative z-10">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center reveal drop-shadow-md">Hành Trình Sự Nghiệp</h2>
+    <!-- EXPERIENCE SECTION (Timeline Style) - PHẦN NÂNG CẤP -->
+    <section id="experience" class="py-24 relative z-10 overflow-hidden">
+        <!-- Nền Gradient nhẹ cho phần này -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center reveal drop-shadow-md">
+                <span class="border-b-4 border-primary/50 pb-2">Hành Trình Sự Nghiệp</span>
+            </h2>
             
-            <div class="space-y-8">
-                <!-- Exp Item 1 -->
-                <div class="group flex flex-col md:flex-row gap-6 p-6 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition duration-300 reveal hover:shadow-lg">
-                    <div class="w-full md:w-32 flex-shrink-0 text-gray-500 font-mono text-sm pt-1">
-                        <span class="inline-block w-2 h-2 rounded-full bg-primary mr-2 animate-pulse"></span> 2023 — Nay
+            <div class="relative space-y-16">
+                <!-- Đường kẻ dọc trung tâm -->
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent -translate-x-1/2 md:translate-x-0 opacity-30"></div>
+
+                <!-- Timeline Item 1 (Phải trên Desktop) -->
+                <div class="relative flex flex-col md:flex-row gap-8 items-center reveal group">
+                    <!-- Dot Mốc thời gian -->
+                    <div class="absolute left-4 md:left-1/2 w-5 h-5 bg-primary rounded-full -translate-x-1/2 shadow-[0_0_20px_#66E0FF] z-10 group-hover:scale-125 transition duration-500 border-4 border-dark"></div>
+                    
+                    <!-- Thời gian (Trái trên Desktop) -->
+                    <div class="md:w-1/2 md:text-right pl-12 md:pl-0 md:pr-16 w-full">
+                        <span class="inline-block px-5 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary font-mono text-sm font-bold shadow-[0_0_15px_rgba(102,224,255,0.2)]">
+                            2023 — Nay
+                        </span>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-primary transition">Senior Frontend Dev · ABC Tech</h3>
-                        <p class="text-gray-400 mt-2 mb-4 leading-relaxed">
-                            Chịu trách nhiệm chính về kiến trúc Frontend cho sản phẩm SaaS. Tối ưu hóa Core Web Vitals tăng 40% hiệu suất. Mentor cho 3 Junior Developers.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono">React</span>
-                            <span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono">TypeScript</span>
-                            <span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono">Next.js</span>
+
+                    <!-- Nội dung (Phải trên Desktop) -->
+                    <div class="md:w-1/2 pl-12 md:pl-16 w-full">
+                        <div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-primary/50 transition duration-300 relative group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(102,224,255,0.15)]">
+                            <!-- Mũi tên chỉ hướng cho Desktop -->
+                            <div class="hidden md:block absolute top-1/2 -left-3 w-6 h-6 bg-card border-l border-b border-white/10 transform rotate-45 -translate-y-1/2 group-hover:border-primary/50 transition duration-300"></div>
+                            
+                            <h3 class="text-2xl font-bold text-white group-hover:text-primary transition mb-1">Senior Frontend Dev</h3>
+                            <p class="text-sm text-gray-400 mb-4 font-mono flex items-center gap-2"><i class="fas fa-building"></i> ABC Tech Solutions</p>
+                            
+                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                Chịu trách nhiệm chính về kiến trúc Frontend cho sản phẩm SaaS. Tối ưu hóa Core Web Vitals tăng 40% hiệu suất. Mentor cho 3 Junior Developers.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-lg bg-primary/10 text-xs font-bold text-primary border border-primary/20">React</span>
+                                <span class="px-3 py-1 rounded-lg bg-primary/10 text-xs font-bold text-primary border border-primary/20">TypeScript</span>
+                                <span class="px-3 py-1 rounded-lg bg-primary/10 text-xs font-bold text-primary border border-primary/20">Next.js</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Exp Item 2 -->
-                <div class="group flex flex-col md:flex-row gap-6 p-6 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition duration-300 reveal hover:shadow-lg">
-                    <div class="w-full md:w-32 flex-shrink-0 text-gray-500 font-mono text-sm pt-1">
-                         <span class="inline-block w-2 h-2 rounded-full bg-gray-500 mr-2 group-hover:bg-primary transition"></span> 2021 — 2023
+                <!-- Timeline Item 2 (Trái trên Desktop) -->
+                <div class="relative flex flex-col md:flex-row-reverse gap-8 items-center reveal group delay-100">
+                    <!-- Dot Mốc thời gian -->
+                    <div class="absolute left-4 md:left-1/2 w-5 h-5 bg-secondary rounded-full -translate-x-1/2 shadow-[0_0_20px_#A855F7] z-10 group-hover:scale-125 transition duration-500 border-4 border-dark"></div>
+                    
+                    <!-- Thời gian (Phải trên Desktop) -->
+                    <div class="md:w-1/2 md:text-left pl-12 md:pl-16 w-full">
+                        <span class="inline-block px-5 py-2 rounded-full bg-secondary/10 border border-secondary/30 text-secondary font-mono text-sm font-bold shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                            2021 — 2023
+                        </span>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-primary transition">Web Developer · Creative Agency</h3>
-                        <p class="text-gray-400 mt-2 mb-4 leading-relaxed">
-                            Xây dựng hơn 20 Landing Page cho các chiến dịch Marketing lớn. Làm việc trực tiếp với Designer để đảm bảo tính thẩm mỹ Pixel-perfect.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-mono">HTML/CSS</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-mono">JavaScript</span>
-                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-mono">GSAP</span>
+
+                    <!-- Nội dung (Trái trên Desktop) -->
+                    <div class="md:w-1/2 pl-12 md:pl-0 md:pr-16 w-full">
+                        <div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-secondary/50 transition duration-300 relative group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(168,85,247,0.15)] md:text-right">
+                            <!-- Mũi tên chỉ hướng cho Desktop -->
+                            <div class="hidden md:block absolute top-1/2 -right-3 w-6 h-6 bg-card border-r border-t border-white/10 transform rotate-45 -translate-y-1/2 group-hover:border-secondary/50 transition duration-300"></div>
+
+                            <h3 class="text-2xl font-bold text-white group-hover:text-secondary transition mb-1">Web Developer</h3>
+                            <div class="text-sm text-gray-400 mb-4 font-mono flex items-center justify-start md:justify-end gap-2">Creative Agency <i class="fas fa-layer-group"></i></div>
+                            
+                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                Xây dựng hơn 20 Landing Page cho các chiến dịch Marketing lớn. Làm việc trực tiếp với Designer để đảm bảo tính thẩm mỹ Pixel-perfect.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2 md:justify-end">
+                                <span class="px-3 py-1 rounded-lg bg-secondary/10 text-xs font-bold text-secondary border border-secondary/20">HTML/CSS</span>
+                                <span class="px-3 py-1 rounded-lg bg-secondary/10 text-xs font-bold text-secondary border border-secondary/20">JavaScript</span>
+                                <span class="px-3 py-1 rounded-lg bg-secondary/10 text-xs font-bold text-secondary border border-secondary/20">GSAP</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Timeline Item 3 (Phải trên Desktop - Thêm mới để cân đối) -->
+                <div class="relative flex flex-col md:flex-row gap-8 items-center reveal group delay-200">
+                    <!-- Dot Mốc thời gian -->
+                    <div class="absolute left-4 md:left-1/2 w-5 h-5 bg-accent rounded-full -translate-x-1/2 shadow-[0_0_20px_#F472B6] z-10 group-hover:scale-125 transition duration-500 border-4 border-dark"></div>
+                    
+                    <!-- Thời gian -->
+                    <div class="md:w-1/2 md:text-right pl-12 md:pl-0 md:pr-16 w-full">
+                        <span class="inline-block px-5 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent font-mono text-sm font-bold shadow-[0_0_15px_rgba(244,114,182,0.2)]">
+                            2020 — 2021
+                        </span>
+                    </div>
+
+                    <!-- Nội dung -->
+                    <div class="md:w-1/2 pl-12 md:pl-16 w-full">
+                        <div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-accent/50 transition duration-300 relative group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(244,114,182,0.15)]">
+                            <!-- Mũi tên -->
+                            <div class="hidden md:block absolute top-1/2 -left-3 w-6 h-6 bg-card border-l border-b border-white/10 transform rotate-45 -translate-y-1/2 group-hover:border-accent/50 transition duration-300"></div>
+                            
+                            <h3 class="text-2xl font-bold text-white group-hover:text-accent transition mb-1">Freelancer UI/UX</h3>
+                            <p class="text-sm text-gray-400 mb-4 font-mono flex items-center gap-2"><i class="fas fa-laptop-house"></i> Tự do</p>
+                            
+                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                Thiết kế giao diện người dùng cho các dự án khởi nghiệp nhỏ. Tập trung vào trải nghiệm người dùng và thiết kế responsive.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-lg bg-accent/10 text-xs font-bold text-accent border border-accent/20">Figma</span>
+                                <span class="px-3 py-1 rounded-lg bg-accent/10 text-xs font-bold text-accent border border-accent/20">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- CONTACT (Floating Glass Bento Grid) -->
+    <!-- CONTACT (Bento Grid Style) -->
     <section id="contact" class="py-24 relative z-10">
         <div class="container mx-auto px-6 max-w-5xl">
-            <div class="glass-card rounded-3xl p-8 md:p-12 overflow-hidden relative reveal animate-float-delayed">
+            <div class="bg-card border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden relative reveal">
                 <!-- Background decor -->
                 <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px]"></div>
 
                 <div class="grid md:grid-cols-2 gap-12 relative z-10">
                     <div>
-                        <h2 class="text-4xl font-bold mb-6 drop-shadow-md">Let's work together!</h2>
-                        <p class="text-gray-300 mb-8 text-lg">
+                        <h2 class="text-4xl font-bold mb-6">Let's work together!</h2>
+                        <p class="text-gray-400 mb-8 text-lg">
                             Bạn có ý tưởng? Tôi có kỹ năng. Hãy cùng nhau tạo ra những sản phẩm đột phá.
                         </p>
                         
                         <div class="space-y-4 font-mono">
-                            <a href="mailto:phucnhpk04431@gmail.com" class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition group hover:border-primary/30 hover:shadow-lg hover:-translate-y-1">
-                                <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition shadow-[0_0_10px_rgba(102,224,255,0.3)]">
+                            <a href="mailto:phucnhpk04431@gmail.com" class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition group">
+                                <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition">
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div>
                                     <div class="text-xs text-gray-500">Email</div>
-                                    <div class="text-white group-hover:text-primary transition">phucnhpk04431@gmail.com</div>
+                                    <div class="text-white">phucnhpk04431@gmail.com</div>
                                 </div>
                             </a>
-                            <a href="tel:0366829537" class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition group hover:border-secondary/30 hover:shadow-lg hover:-translate-y-1">
-                                <div class="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary group-hover:scale-110 transition shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                            <a href="tel:0366829537" class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition group">
+                                <div class="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary group-hover:scale-110 transition">
                                     <i class="fas fa-phone"></i>
                                 </div>
                                 <div>
                                     <div class="text-xs text-gray-500">Phone / Zalo</div>
-                                    <div class="text-white group-hover:text-secondary transition">0366 829 537</div>
+                                    <div class="text-white">0366 829 537</div>
                                 </div>
                             </a>
                             <!-- Address Block -->
-                            <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition group cursor-default hover:border-red-500/30 hover:shadow-lg hover:-translate-y-1">
-                                <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-500 group-hover:scale-110 transition shadow-[0_0_10px_rgba(239,68,68,0.3)]">
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition group cursor-default">
+                                <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-500 group-hover:scale-110 transition">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div>
                                     <div class="text-xs text-gray-500">Địa chỉ</div>
-                                    <div class="text-white text-sm group-hover:text-red-400 transition">175 Hà Huy Tập, P. Tân Lợi, Buôn Ma Thuột</div>
+                                    <div class="text-white text-sm">175 Hà Huy Tập, P. Tân Lợi, Buôn Ma Thuột</div>
                                 </div>
                             </div>
                         </div>
@@ -456,17 +530,17 @@
                     <!-- UPDATED FORM WITH JS HANDLING -->
                     <form id="contactForm" class="space-y-4">
                         <div class="grid grid-cols-2 gap-4">
-                            <input type="text" name="name" placeholder="Tên" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition focus:bg-black/60 shadow-inner" required>
-                            <input type="email" name="email" placeholder="Email" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition focus:bg-black/60 shadow-inner" required>
+                            <input type="text" name="name" placeholder="Tên" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition" required>
+                            <input type="email" name="email" placeholder="Email" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition" required>
                         </div>
-                        <input type="text" name="subject" placeholder="Chủ đề" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition focus:bg-black/60 shadow-inner">
-                        <textarea rows="4" name="message" placeholder="Nội dung tin nhắn..." class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition resize-none focus:bg-black/60 shadow-inner" required></textarea>
+                        <input type="text" name="subject" placeholder="Chủ đề" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition">
+                        <textarea rows="4" name="message" placeholder="Nội dung tin nhắn..." class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition resize-none" required></textarea>
                         
-                        <button type="submit" id="submitBtn" class="w-full py-4 bg-white text-black font-bold rounded-lg hover:bg-primary transition flex justify-center items-center gap-2 hover:shadow-[0_0_20px_rgba(102,224,255,0.6)] transform hover:-translate-y-1">
+                        <button type="submit" id="submitBtn" class="w-full py-4 bg-white text-black font-bold rounded-lg hover:bg-primary transition flex justify-center items-center gap-2">
                             <span>Gửi ngay</span> <i class="fas fa-paper-plane"></i>
                         </button>
                         <!-- Status Message Area -->
-                        <div id="statusMessage" class="hidden p-3 rounded-lg text-center text-sm font-bold backdrop-blur-md"></div>
+                        <div id="statusMessage" class="hidden p-3 rounded-lg text-center text-sm font-bold"></div>
                     </form>
                 </div>
             </div>
@@ -506,6 +580,10 @@
 
         // 2. Handle Contact Form with AJAX
         const form = document.getElementById("contactForm");
+        
+        if (form) {
+            form.addEventListener("submit", handleSubmit);
+        }
         
         async function handleSubmit(event) {
             event.preventDefault();
@@ -567,8 +645,6 @@
                 btn.classList.remove('opacity-75');
             });
         }
-
-        form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
