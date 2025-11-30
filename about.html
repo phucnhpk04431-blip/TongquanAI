@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Về Tôi | NGUYEN HOANG PHUC</title>
+    <title>Về Tôi | NGUYỄN HOÀNG PHÚC</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,7 +28,7 @@
                         primary: '#66E0FF', 
                         secondary: '#A855F7', 
                         success: '#10B981',
-                        accent: '#F472B6',
+                        accent: '#F472B6', // Pink
                     },
                     backgroundImage: {
                         'grid-pattern': "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
@@ -36,8 +36,6 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'blob': 'blob 7s infinite',
-                        'text': 'text 5s ease infinite',
-                        'typing': 'typing 3.5s steps(40, end), blink .75s step-end infinite',
                     },
                     keyframes: {
                         float: {
@@ -49,24 +47,6 @@
                             '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        text: {
-                            '0%, 100%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'left center'
-                            },
-                            '50%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'right center'
-                            },
-                        },
-                        typing: {
-                            from: { width: '0' },
-                            to: { width: '100%' }
-                        },
-                        blink: {
-                            'from, to': { borderColor: 'transparent' },
-                            '50%': { borderColor: '#66E0FF' }
                         }
                     }
                 }
@@ -77,16 +57,15 @@
         body { background-color: #0B0C10; color: #E2E8F0; overflow-x: hidden; }
         .glass-card {
             background: rgba(20, 20, 25, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
         }
         .glass-card:hover {
-            border-color: rgba(102, 224, 255, 0.3);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
         .bg-grid {
             background-size: 40px 40px;
@@ -97,240 +76,241 @@
             opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        .typing-container {
-            display: inline-block;
-            overflow: hidden;
-            border-right: 3px solid #66E0FF;
-            white-space: nowrap;
-            margin: 0 auto;
-            animation: typing 3.5s steps(40, end), blink .75s step-end infinite;
-            max-width: 100%;
-        }
     </style>
 </head>
-<body class="antialiased selection:bg-primary selection:text-black">
+<body class="antialiased overflow-x-hidden">
 
-    <!-- DYNAMIC BACKGROUND -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style="background-image: url('image_1cc379.png');"></div>
-        <div class="absolute inset-0 bg-dark/90"></div>
+    <!-- BACKGROUND -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('image_1cc379.png');"></div>
+        <div class="absolute inset-0 bg-black/85"></div>
         
+        <!-- Animated Blobs -->
         <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div class="absolute top-0 -right-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        <div class="absolute bottom-0 right-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
         
-        <div class="absolute inset-0 bg-grid-pattern opacity-[0.05] bg-grid"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] bg-grid"></div>
     </div>
 
     <!-- NAV -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl bg-black/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl flex justify-between items-center transition-all duration-300 hover:border-primary/30" id="navbar">
-        <a href="index.html" class="font-bold text-lg tracking-tight flex items-center gap-2 text-white hover:text-primary transition group">
-            <i class="fas fa-arrow-left text-sm group-hover:-translate-x-1 transition"></i> Trang chủ
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl flex justify-between items-center transition-all duration-300 hover:border-white/20" id="navbar">
+        <a href="index.html" class="font-bold text-lg tracking-tight flex items-center gap-2 text-white hover:text-primary transition">
+            <i class="fas fa-arrow-left text-sm"></i> Trang chủ
         </a>
         <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
-            <span class="px-4 py-1.5 text-sm font-medium text-white bg-primary/20 rounded-full cursor-default border border-primary/20 shadow-[0_0_10px_rgba(102,224,255,0.3)]">Giới thiệu</span>
-            <a href="index.html#projects" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Dự án</a>
+            <span class="px-4 py-1.5 text-sm font-medium text-white bg-white/10 rounded-full cursor-default">Giới thiệu</span>
+            <a href="projects.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Dự án</a>
+            <a href="experience.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Kinh nghiệm</a>
         </div>
-        <a href="index.html#contact" class="hidden md:block bg-white text-black hover:bg-primary hover:text-black transition px-5 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-primary/50 transform hover:-translate-y-0.5 active:scale-95">
+        <a href="index.html#contact" class="hidden md:block bg-white text-black hover:bg-primary hover:text-black transition px-5 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-primary/50 transform hover:-translate-y-0.5">
             Hợp tác
         </a>
     </nav>
 
     <!-- MAIN CONTENT -->
     <section class="relative z-10 pt-40 pb-20 px-6">
-        <div class="container mx-auto max-w-5xl relative">
+        <div class="container mx-auto max-w-4xl relative">
             
             <!-- Header Banner Area -->
-            <div class="text-center mb-20 reveal active relative">
-                <span class="text-primary font-mono text-sm tracking-widest uppercase mb-6 block border border-primary/30 inline-block px-4 py-1 rounded-full bg-primary/5 animate-pulse">
+            <div class="text-center mb-16 reveal active relative">
+                <span class="text-primary font-mono text-sm tracking-widest uppercase mb-3 block border border-primary/30 inline-block px-4 py-1 rounded-full bg-primary/5">
                     AI DEVELOPER PORTFOLIO
                 </span>
-                
-                <!-- Tên chính: Tăng padding-y và line-height để không bị cắt dấu -->
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent animate-text drop-shadow-xl py-6 leading-relaxed relative z-10">
-                    NGUYỄN HOÀNG PHÚC
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 drop-shadow-lg">
+                    Nguyễn Hoàng Phúc
                 </h1>
-                
-                <div class="h-8 mb-8 flex justify-center">
-                    <p class="text-xl text-gray-300 font-light typing-container px-2">
-                        Đam mê AI • Kiến tạo tương lai • Lập trình viên K21
-                    </p>
-                </div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed font-light">
+                    Sinh viên chuyên ngành <strong class="text-white">Công nghệ Thông tin</strong> với định hướng chuyên sâu về <strong class="text-primary">Trí tuệ Nhân tạo</strong>. 
+                    Tôi khao khát vận dụng tư duy thuật toán và công nghệ học máy để kiến tạo những giải pháp thông minh, giải quyết các thách thức thực tiễn trong kỷ nguyên số.
+                </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-start">
                 <!-- Left: Bio -->
-                <div class="glass-card p-8 rounded-3xl reveal space-y-8 border-t-4 border-t-primary/50 h-full">
+                <div class="glass-card p-8 rounded-3xl reveal space-y-6">
                     <!-- Profile Image -->
-                    <div class="relative w-64 h-64 mx-auto animate-float">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full blur-2xl opacity-60 group-hover:opacity-80 transition duration-500 animate-pulse"></div>
-                        <img src="https://scontent.fbmv1-1.fna.fbcdn.net/v/t39.30808-6/500276418_1203557381717097_7199059158045401724_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHXB0_j3A_PpEyfNpuVmOMn7HFqRdAj7aPscWpF0CPtox4CIQkOdopC4pgpCRdbIttDbpAi7b1BcVpdFOOaTEjI&_nc_ohc=sVSyJBNhY9YQ7kNvwH0hAFJ&_nc_oc=Adm95P3xuFMPW7wjeYnkQ3VmRRhl2NneTdXxdp00h0f21QW1YyeiSmCKf8Y1MIRRdf0&_nc_zt=23&_nc_ht=scontent.fbmv1-1.fna&_nc_gid=F8O1Z74T0zRLbeoWDD7dRA&oh=00_AfiRlHjU7qzgD21XyhBoe16P83NAiUQg26_LmYMwByrPtA&oe=6931BBF8" alt="Nguyễn Hoàng Phúc" class="relative w-full h-full rounded-full object-cover border-4 border-white/20 shadow-2xl transform transition duration-500 hover:scale-105 hover:border-primary/50">
-                        <div class="absolute bottom-4 right-4 bg-success w-6 h-6 rounded-full border-4 border-dark z-20" title="Online"></div>
+                    <div class="relative w-64 h-64 mx-auto mb-8 animate-float">
+                        <div class="absolute inset-0 bg-primary/10 rounded-full blur-2xl"></div>
+                        <img src="https://scontent.fbmv1-1.fna.fbcdn.net/v/t39.30808-6/500276418_1203557381717097_7199059158045401724_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHXB0_j3A_PpEyfNpuVmOMn7HFqRdAj7aPscWpF0CPtox4CIQkOdopC4pgpCRdbIttDbpAi7b1BcVpdFOOaTEjI&_nc_ohc=sVSyJBNhY9YQ7kNvwH0hAFJ&_nc_oc=Adm95P3xuFMPW7wjeYnkQ3VmRRhl2NneTdXxdp00h0f21QW1YyeiSmCKf8Y1MIRRdf0&_nc_zt=23&_nc_ht=scontent.fbmv1-1.fna&_nc_gid=F8O1Z74T0zRLbeoWDD7dRA&oh=00_AfiRlHjU7qzgD21XyhBoe16P83NAiUQg26_LmYMwByrPtA&oe=6931BBF8" alt="Nguyễn Hoàng Phúc" class="relative w-full h-full rounded-full object-cover border-4 border-white/10 shadow-xl">
                     </div>
 
-                    <h2 class="text-2xl font-bold text-white flex items-center gap-3 pb-2 border-b border-white/10">
-                        <span class="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary">
-                            <i class="fas fa-id-card"></i>
-                        </span>
-                        Thông tin cá nhân
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
+                        <i class="fas fa-id-card text-secondary"></i> Thông tin cá nhân
                     </h2>
                     
-                    <!-- Thông tin dạng lưới -->
-                    <div class="grid grid-cols-1 gap-5">
-                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 hover:border-primary/30 transition group cursor-default">
-                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary group-hover:rotate-12 transition text-xl">
+                    <!-- Thông tin dạng lưới gọn gàng -->
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
+                            <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition">
                                 <i class="fas fa-user"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Họ và tên</p>
-                                <p class="text-white font-bold text-lg group-hover:text-primary transition">Nguyễn Hoàng Phúc</p>
+                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Họ và tên</p>
+                                <p class="text-white font-bold text-lg">Nguyễn Hoàng Phúc</p>
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 hover:border-accent/30 transition group cursor-default">
-                            <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center text-accent group-hover:rotate-12 transition text-xl">
+                        <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
+                            <div class="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary group-hover:scale-110 transition">
                                 <i class="fas fa-birthday-cake"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Ngày sinh</p>
-                                <p class="text-white font-bold text-lg group-hover:text-accent transition">24/03/2007</p>
+                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Ngày sinh</p>
+                                <p class="text-white font-bold text-lg">24/03/2007</p>
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 hover:border-success/30 transition group cursor-default">
-                            <div class="w-12 h-12 rounded-full bg-success/20 flex items-center justify-center text-success group-hover:rotate-12 transition text-xl">
+                        <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
+                            <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center text-success group-hover:scale-110 transition">
                                 <i class="fas fa-id-badge"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Mã sinh viên</p>
-                                <p class="text-white font-bold text-lg font-mono group-hover:text-success transition">PK04431</p>
+                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Mã sinh viên</p>
+                                <p class="text-white font-bold text-lg">PK04431</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 hover:border-purple-500/30 transition group cursor-default">
-                            <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-500 group-hover:rotate-12 transition text-xl">
+                        <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
+                            <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-500 group-hover:scale-110 transition">
                                 <i class="fas fa-layer-group"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Khóa học</p>
-                                <p class="text-white font-bold text-lg group-hover:text-purple-400 transition">K21 - FPT Polytechnic</p>
+                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Khóa học</p>
+                                <p class="text-white font-bold text-lg">K21 - FPT Polytechnic</p>
                             </div>
                         </div>
                     </div>
+
+                    <p class="text-gray-400 text-sm italic mt-6 leading-relaxed border-t border-white/10 pt-4 text-center">
+                        "Đam mê khám phá sức mạnh của AI và kiến tạo những giải pháp công nghệ mang tính ứng dụng cao."
+                    </p>
                 </div>
 
                 <!-- Right: Education & Stats -->
                 <div class="space-y-8 reveal">
                     <!-- Education Card -->
-                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group border-t-4 border-t-secondary/50">
+                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition"></div>
+                        
                         <!-- Logo FPT -->
-                        <div class="mb-8 flex justify-center relative">
-                            <div class="absolute inset-0 bg-orange-500 blur-[60px] opacity-10 rounded-full"></div>
-                            <div class="bg-white p-4 rounded-2xl shadow-2xl transform group-hover:scale-105 transition duration-500 relative z-10">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" alt="Logo FPT Polytechnic" class="h-24 w-auto object-contain">
+                        <div class="mb-8 flex justify-center">
+                            <div class="bg-white p-4 rounded-2xl shadow-2xl transform group-hover:scale-105 transition duration-500">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" alt="Logo FPT Polytechnic" class="h-20 w-auto object-contain">
                             </div>
                         </div>
 
-                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 pb-2 border-b border-white/10">
-                            <span class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500">
-                                <i class="fas fa-university"></i>
-                            </span>
-                            Học vấn
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
+                            <i class="fas fa-university text-primary"></i> Học vấn
                         </h2>
                         
-                        <div class="grid grid-cols-1 gap-5">
-                            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition group">
-                                <div class="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 text-xl">
+                        <!-- Thông tin Học vấn dạng lưới -->
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
+                                <div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:scale-110 transition">
                                     <i class="fas fa-school"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Trường đào tạo</p>
-                                    <p class="text-white font-bold text-lg group-hover:text-orange-400 transition">FPT Polytechnic Tây Nguyên</p>
+                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Trường đào tạo</p>
+                                    <p class="text-white font-bold text-lg">FPT Polytechnic Tây Nguyên</p>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition group">
-                                <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 text-xl">
+                            <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
+                                <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-500 group-hover:scale-110 transition">
                                     <i class="fas fa-brain"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Chuyên ngành chính</p>
-                                    <p class="text-white font-bold text-lg group-hover:text-blue-400 transition">Lập trình ứng dụng AI</p>
+                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Chuyên ngành chính</p>
+                                    <p class="text-white font-bold text-lg">Lập trình ứng dụng AI</p>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition group">
-                                <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-500 text-xl">
+                            <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
+                                <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-500 group-hover:scale-110 transition">
+                                    <i class="fas fa-book-reader"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Triết lý đào tạo</p>
+                                    <p class="text-white font-bold text-lg">Thực học - Thực nghiệp</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-500 group-hover:scale-110 transition">
                                     <i class="fas fa-microchip"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Trọng tâm nghiên cứu</p>
-                                    <p class="text-white font-bold text-sm group-hover:text-cyan-400 transition">Machine Learning, Deep Learning</p>
+                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Trọng tâm nghiên cứu</p>
+                                    <p class="text-white font-bold text-sm">Machine Learning, Deep Learning</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Kỹ năng & Công nghệ -->
-                    <div class="glass-card p-8 rounded-3xl mt-8 border-t-4 border-t-success/50">
-                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 pb-2 border-b border-white/10">
-                            <span class="w-10 h-10 rounded-lg bg-success/20 flex items-center justify-center text-success">
-                                <i class="fas fa-laptop-code"></i>
-                            </span>
-                            Kỹ năng & Công nghệ
+                    <!-- Kỹ năng & Công nghệ (Cards) -->
+                    <div class="glass-card p-8 rounded-3xl mt-8">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
+                            <i class="fas fa-laptop-code text-success"></i> Kỹ năng & Công nghệ
                         </h2>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Nhóm 1 -->
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition group hover:-translate-y-1">
+                            <!-- Nhóm 1: Ngôn ngữ -->
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 transition group hover:-translate-y-1">
                                 <div class="flex items-center gap-3 mb-3">
-                                    <i class="fab fa-python text-yellow-400 text-xl"></i>
+                                    <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-500 group-hover:scale-110 transition">
+                                        <i class="fab fa-python"></i>
+                                    </div>
                                     <h3 class="font-bold text-white">Ngôn ngữ</h3>
                                 </div>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">Python</span>
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">C++</span>
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">JS</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">Python</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">C++</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">JS</span>
                                 </div>
                             </div>
 
-                            <!-- Nhóm 2 -->
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition group hover:-translate-y-1">
+                            <!-- Nhóm 2: AI Core -->
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 transition group hover:-translate-y-1">
                                 <div class="flex items-center gap-3 mb-3">
-                                    <i class="fas fa-network-wired text-orange-400 text-xl"></i>
+                                    <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:scale-110 transition">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
                                     <h3 class="font-bold text-white">AI Core</h3>
                                 </div>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">TensorFlow</span>
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">PyTorch</span>
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">OpenCV</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">TensorFlow</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">PyTorch</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">OpenCV</span>
                                 </div>
                             </div>
 
-                            <!-- Nhóm 3 -->
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition group hover:-translate-y-1">
+                            <!-- Nhóm 3: Data -->
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 transition group hover:-translate-y-1">
                                 <div class="flex items-center gap-3 mb-3">
-                                    <i class="fas fa-database text-blue-400 text-xl"></i>
+                                    <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-500 group-hover:scale-110 transition">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
                                     <h3 class="font-bold text-white">Dữ liệu</h3>
                                 </div>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">Pandas</span>
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">NumPy</span>
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">SQL</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">Pandas</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">NumPy</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">SQL</span>
                                 </div>
                             </div>
 
-                            <!-- Nhóm 4 -->
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition group hover:-translate-y-1">
+                            <!-- Nhóm 4: Công cụ -->
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 transition group hover:-translate-y-1">
                                 <div class="flex items-center gap-3 mb-3">
-                                    <i class="fab fa-github text-white text-xl"></i>
+                                    <div class="w-10 h-10 rounded-lg bg-gray-500/20 flex items-center justify-center text-gray-400 group-hover:scale-110 transition">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
                                     <h3 class="font-bold text-white">Công cụ</h3>
                                 </div>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">Git</span>
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">VS Code</span>
-                                    <span class="text-xs px-2 py-1 bg-dark/50 rounded text-gray-300 border border-white/10">Docker</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">Git</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">VS Code</span>
+                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">Docker</span>
                                 </div>
                             </div>
                         </div>
@@ -342,10 +322,10 @@
             <div class="mt-20 text-center reveal">
                 <h3 class="text-2xl font-bold text-white mb-6">Bạn muốn hợp tác cùng tôi?</h3>
                 <div class="flex justify-center gap-4">
-                    <a href="index.html#contact" class="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-primary transition hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(102,224,255,0.5)]">
+                    <a href="index.html#contact" class="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-primary transition hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/50">
                         Liên hệ ngay
                     </a>
-                    <a href="index.html" class="px-8 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition hover:border-white/40">
+                    <a href="index.html" class="px-8 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition">
                         Về trang chủ
                     </a>
                 </div>
@@ -356,7 +336,7 @@
 
     <!-- FOOTER -->
     <footer class="py-8 border-t border-white/10 text-center text-gray-500 text-sm relative z-10 font-mono bg-black/80">
-        <p>&copy; 2025 NGUYEN HOANG PHUC. All Rights Reserved.</p>
+        <p>&copy; 2025 NGUYỄN HOÀNG PHÚC. All Rights Reserved.</p>
     </footer>
 
     <script>
