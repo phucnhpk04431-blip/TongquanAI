@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Án | NGUYỄN HOÀNG PHÚC</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        dark: '#0B0C10',
+                        card: 'rgba(255, 255, 255, 0.03)', 
+                        primary: '#66E0FF', 
+                        secondary: '#A855F7', 
+                        success: '#10B981',
+                        accent: '#F472B6',
+                        warning: '#F59E0B',
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                        'grid-move': 'grid-move 20s linear infinite',
+                        'text-shimmer': 'text-shimmer 3s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        'grid-move': {
+                            '0%': { backgroundPosition: '0 0' },
+                            '100%': { backgroundPosition: '40px 40px' },
+                        },
+                        'text-shimmer': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '200% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0B0C10; color: #E2E8F0; overflow-x: hidden; }
+        
+        .glass-card {
+            background: rgba(20, 20, 25, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .bg-grid {
+            background-size: 40px 40px;
+            mask-image: linear-gradient(to bottom, transparent, 10%, black, 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, 5%, black, 95%, transparent);
+        }
+        
+        .reveal {
+            opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-black">
+
+    <!-- DYNAMIC BACKGROUND -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style="background-image: url('image_1cc379.png');"></div>
+        <div class="absolute inset-0 bg-dark/90"></div>
+        
+        <div class="absolute top-0 -left-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
+        
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.05] bg-grid animate-grid-move"></div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl bg-black/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl flex justify-between items-center transition-all duration-300 hover:border-primary/30" id="navbar">
+        <a href="index.html" class="font-bold text-lg tracking-tight flex items-center gap-2 text-white hover:text-primary transition group">
+            <i class="fas fa-arrow-left text-sm group-hover:-translate-x-1 transition"></i> Trang chủ
+        </a>
+        <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
+            <a href="about.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Giới thiệu</a>
+            <span class="px-4 py-1.5 text-sm font-medium text-white bg-primary/20 rounded-full cursor-default border border-primary/20 shadow-[0_0_10px_rgba(102,224,255,0.3)]">Dự án</span>
+        </div>
+        <a href="index.html#contact" class="hidden md:block bg-white text-black hover:bg-primary hover:text-black transition px-5 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-primary/50 transform hover:-translate-y-0.5 active:scale-95">
+            Hợp tác
+        </a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <section class="relative z-10 pt-40 pb-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            
+            <!-- Header -->
+            <div class="text-center mb-16 reveal active">
+                <span class="text-primary font-mono text-sm tracking-widest uppercase mb-4 block border border-primary/30 inline-block px-4 py-1 rounded-full bg-primary/5 animate-pulse">
+                    MY WORK
+                </span>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-secondary bg-[length:200%_auto] animate-text-shimmer drop-shadow-xl py-2">
+                    Danh Sách Dự Án
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Tổng hợp các dự án thực tế từ Web Development đến AI Application mà tôi đã thực hiện.
+                </p>
+            </div>
+
+            <!-- Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+                <button class="px-6 py-2 rounded-full bg-primary/20 text-white border border-primary/50 shadow-[0_0_15px_rgba(102,224,255,0.3)] font-bold transition transform hover:scale-105 hover:bg-primary hover:text-black">Tất cả</button>
+                <button class="px-6 py-2 rounded-full bg-transparent text-gray-400 hover:bg-white/10 hover:text-white transition border border-white/5 hover:border-secondary/50 transform hover:scale-105 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]">AI / Machine Learning</button>
+                <button class="px-6 py-2 rounded-full bg-transparent text-gray-400 hover:bg-white/10 hover:text-white transition border border-white/5 hover:border-primary/50 transform hover:scale-105 hover:shadow-[0_0_15px_rgba(102,224,255,0.3)]">Web Development</button>
+                <button class="px-6 py-2 rounded-full bg-transparent text-gray-400 hover:bg-white/10 hover:text-white transition border border-white/5 hover:border-success/50 transform hover:scale-105 hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]">Mobile App</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+                
+                <!-- Project 1: AI Related (Theme: Purple) -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] relative h-full flex flex-col">
+                    <div class="relative h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1" alt="AI Project">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-secondary/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg animate-float">
+                            AI Core
+                        </div>
+                    </div>
+                    <div class="p-6 relative flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white group-hover:text-secondary transition">Face Recognition</h3>
+                            <span class="text-[10px] bg-success/20 text-success px-2 py-1 rounded border border-success/20">Đã hoàn thành</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Hệ thống điểm danh tự động sử dụng nhận diện khuôn mặt với độ chính xác 98%.</p>
+                        
+                        <!-- Chi tiết tính năng -->
+                        <ul class="text-xs text-gray-400 mb-4 space-y-1 pl-4 list-disc marker:text-secondary">
+                            <li>Nhận diện thời gian thực (Real-time)</li>
+                            <li>Chống giả mạo khuôn mặt (Anti-spoofing)</li>
+                            <li>Tích hợp cơ sở dữ liệu SQL</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                            <span class="text-xs px-2 py-1 bg-secondary/10 rounded text-secondary border border-secondary/20">Python</span>
+                            <span class="text-xs px-2 py-1 bg-secondary/10 rounded text-secondary border border-secondary/20">OpenCV</span>
+                            <span class="text-xs px-2 py-1 bg-secondary/10 rounded text-secondary border border-secondary/20">TensorFlow</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 py-2 rounded-lg bg-white/10 hover:bg-secondary hover:text-white text-center text-sm font-bold transition transform hover:-translate-y-1">Demo</a>
+                            <a href="#" class="flex-1 py-2 rounded-lg border border-white/10 hover:bg-white/10 hover:border-secondary/50 text-center text-sm font-bold transition transform hover:-translate-y-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Web E-commerce (Theme: Blue) -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:border-primary/50 hover:shadow-[0_0_30px_rgba(102,224,255,0.15)] relative h-full flex flex-col">
+                    <div class="relative h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:-rotate-1" alt="Web Project">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-primary/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-black shadow-lg animate-float">
+                            Web App
+                        </div>
+                    </div>
+                    <div class="p-6 relative flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white group-hover:text-primary transition">NeoShop E-commerce</h3>
+                            <span class="text-[10px] bg-success/20 text-success px-2 py-1 rounded border border-success/20">Đã hoàn thành</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Nền tảng thương mại điện tử tích hợp gợi ý sản phẩm thông minh bằng AI.</p>
+                        
+                        <!-- Chi tiết tính năng -->
+                        <ul class="text-xs text-gray-400 mb-4 space-y-1 pl-4 list-disc marker:text-primary">
+                            <li>Gợi ý sản phẩm thông minh</li>
+                            <li>Tích hợp thanh toán Momo/VNPay</li>
+                            <li>Dashboard quản trị Admin</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                            <span class="text-xs px-2 py-1 bg-primary/10 rounded text-primary border border-primary/20">ReactJS</span>
+                            <span class="text-xs px-2 py-1 bg-primary/10 rounded text-primary border border-primary/20">NodeJS</span>
+                            <span class="text-xs px-2 py-1 bg-primary/10 rounded text-primary border border-primary/20">MongoDB</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 py-2 rounded-lg bg-white/10 hover:bg-primary hover:text-black text-center text-sm font-bold transition transform hover:-translate-y-1">Demo</a>
+                            <a href="#" class="flex-1 py-2 rounded-lg border border-white/10 hover:bg-white/10 hover:border-primary/50 text-center text-sm font-bold transition transform hover:-translate-y-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Mobile App (Theme: Green) -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:border-success/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] relative h-full flex flex-col">
+                    <div class="relative h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1" alt="Mobile Project">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-success/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-black shadow-lg animate-float">
+                            Mobile
+                        </div>
+                    </div>
+                    <div class="p-6 relative flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white group-hover:text-success transition">Smart Travel App</h3>
+                            <span class="text-[10px] bg-warning/20 text-warning px-2 py-1 rounded border border-warning/20">Đang phát triển</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Ứng dụng đặt vé máy bay và khách sạn với giao diện tối ưu trải nghiệm người dùng.</p>
+                        
+                        <ul class="text-xs text-gray-400 mb-4 space-y-1 pl-4 list-disc marker:text-success">
+                            <li>Tìm kiếm địa điểm theo GPS</li>
+                            <li>Chat trực tiếp với hỗ trợ viên</li>
+                            <li>Lên lịch trình tự động</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                            <span class="text-xs px-2 py-1 bg-success/10 rounded text-success border border-success/20">Flutter</span>
+                            <span class="text-xs px-2 py-1 bg-success/10 rounded text-success border border-success/20">Firebase</span>
+                            <span class="text-xs px-2 py-1 bg-success/10 rounded text-success border border-success/20">Google Maps</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 py-2 rounded-lg bg-white/10 hover:bg-success hover:text-black text-center text-sm font-bold transition transform hover:-translate-y-1">Demo</a>
+                            <a href="#" class="flex-1 py-2 rounded-lg border border-white/10 hover:bg-white/10 hover:border-success/50 text-center text-sm font-bold transition transform hover:-translate-y-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Data Science (Theme: Orange/Accent) -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:border-accent/50 hover:shadow-[0_0_30px_rgba(244,114,182,0.15)] relative h-full flex flex-col">
+                    <div class="relative h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:-rotate-1" alt="Data Project">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-accent/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg animate-float">
+                            Data Science
+                        </div>
+                    </div>
+                    <div class="p-6 relative flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white group-hover:text-accent transition">Stock Predictor</h3>
+                            <span class="text-[10px] bg-success/20 text-success px-2 py-1 rounded border border-success/20">Đã hoàn thành</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Mô hình dự đoán giá cổ phiếu sử dụng thuật toán LSTM và phân tích dữ liệu lịch sử.</p>
+                        
+                        <ul class="text-xs text-gray-400 mb-4 space-y-1 pl-4 list-disc marker:text-accent">
+                            <li>Phân tích chuỗi thời gian</li>
+                            <li>Trực quan hóa dữ liệu (Charts)</li>
+                            <li>Độ chính xác > 85%</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                            <span class="text-xs px-2 py-1 bg-accent/10 rounded text-accent border border-accent/20">Python</span>
+                            <span class="text-xs px-2 py-1 bg-accent/10 rounded text-accent border border-accent/20">Pandas</span>
+                            <span class="text-xs px-2 py-1 bg-accent/10 rounded text-accent border border-accent/20">Keras</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 py-2 rounded-lg bg-white/10 hover:bg-accent hover:text-white text-center text-sm font-bold transition transform hover:-translate-y-1">Demo</a>
+                            <a href="#" class="flex-1 py-2 rounded-lg border border-white/10 hover:bg-white/10 hover:border-accent/50 text-center text-sm font-bold transition transform hover:-translate-y-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: AI Chatbot (Theme: Yellow) -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:border-warning/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)] relative h-full flex flex-col">
+                    <div class="relative h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1" alt="AI Chatbot">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-warning/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-black shadow-lg animate-float">
+                            NLP AI
+                        </div>
+                    </div>
+                    <div class="p-6 relative flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white group-hover:text-warning transition">Smart Assistant Bot</h3>
+                            <span class="text-[10px] bg-warning/20 text-warning px-2 py-1 rounded border border-warning/20">Beta</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Chatbot hỗ trợ trả lời câu hỏi tự động, tích hợp GPT-4 và xử lý ngôn ngữ tự nhiên.</p>
+                        
+                        <ul class="text-xs text-gray-400 mb-4 space-y-1 pl-4 list-disc marker:text-warning">
+                            <li>Hỗ trợ đa ngôn ngữ</li>
+                            <li>Tích hợp Voice-to-Text</li>
+                            <li>Ghi nhớ ngữ cảnh hội thoại</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                            <span class="text-xs px-2 py-1 bg-warning/10 rounded text-warning border border-warning/20">OpenAI API</span>
+                            <span class="text-xs px-2 py-1 bg-warning/10 rounded text-warning border border-warning/20">Python</span>
+                            <span class="text-xs px-2 py-1 bg-warning/10 rounded text-warning border border-warning/20">FastAPI</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 py-2 rounded-lg bg-white/10 hover:bg-warning hover:text-black text-center text-sm font-bold transition transform hover:-translate-y-1">Demo</a>
+                            <a href="#" class="flex-1 py-2 rounded-lg border border-white/10 hover:bg-white/10 hover:border-warning/50 text-center text-sm font-bold transition transform hover:-translate-y-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Crypto Dashboard (Theme: Teal) -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:border-primary/50 hover:shadow-[0_0_30px_rgba(102,224,255,0.15)] relative h-full flex flex-col">
+                    <div class="relative h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1621504450168-b8c4375c2b80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:-rotate-1" alt="Crypto">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition duration-300"></div>
+                        <div class="absolute top-4 right-4 bg-primary/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-black shadow-lg animate-float">
+                            Web3
+                        </div>
+                    </div>
+                    <div class="p-6 relative flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white group-hover:text-primary transition">Crypto Tracker</h3>
+                            <span class="text-[10px] bg-success/20 text-success px-2 py-1 rounded border border-success/20">Đã hoàn thành</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Bảng điều khiển theo dõi giá tiền ảo thời gian thực với biểu đồ nến tương tác.</p>
+                        
+                        <ul class="text-xs text-gray-400 mb-4 space-y-1 pl-4 list-disc marker:text-primary">
+                            <li>Dữ liệu Real-time (WebSocket)</li>
+                            <li>Biểu đồ tương tác (ChartJS)</li>
+                            <li>Cảnh báo biến động giá</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                            <span class="text-xs px-2 py-1 bg-primary/10 rounded text-primary border border-primary/20">Vue.js</span>
+                            <span class="text-xs px-2 py-1 bg-primary/10 rounded text-primary border border-primary/20">Tailwind</span>
+                            <span class="text-xs px-2 py-1 bg-primary/10 rounded text-primary border border-primary/20">CoinGecko API</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="flex-1 py-2 rounded-lg bg-white/10 hover:bg-primary hover:text-black text-center text-sm font-bold transition transform hover:-translate-y-1">Demo</a>
+                            <a href="#" class="flex-1 py-2 rounded-lg border border-white/10 hover:bg-white/10 hover:border-primary/50 text-center text-sm font-bold transition transform hover:-translate-y-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- More Projects Placeholder -->
+            <div class="mt-16 text-center reveal">
+                <p class="text-gray-400 mb-4 animate-pulse">Và còn nhiều dự án thú vị khác đang được phát triển...</p>
+                <a href="https://github.com" target="_blank" class="inline-flex items-center gap-2 text-primary hover:text-white transition border-b border-primary pb-1 group">
+                    Xem thêm trên Github <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-white/10 text-center text-gray-500 text-sm relative z-10 font-mono bg-black/80">
+        <p>&copy; 2025 NGUYỄN HOÀNG PHÚC. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
