@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NGUYỄN HOÀNG PHÚC | Creative Developer</title>
+    <title>NGUYỄN HOÀNG PHÚC | AI Engineer & Creative Developer</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -186,19 +186,17 @@
         <div class="absolute inset-0 bg-grid-pattern opacity-[0.05] bg-grid"></div>
     </div>
 
-    <!-- FLOATING NAVIGATION (Thêm hiệu ứng kính cường lực) -->
+    <!-- FLOATING NAVIGATION -->
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl shadow-primary/5 flex justify-between items-center transition-all duration-300 hover:border-primary/20 hover:shadow-primary/10" id="navbar">
         <a href="index.html" class="font-bold text-lg tracking-tight flex items-center gap-2 text-white hover:text-primary transition">
             <span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_#66E0FF] animate-pulse"></span>
             NGUYỄN HOÀNG PHÚC
         </a>
         
-        <!-- Desktop Menu -->
+        <!-- Desktop Menu (Đồng bộ link) -->
         <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
             <a href="about.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Giới thiệu</a>
-            <!-- LINK DỰ ÁN MỚI -->
             <a href="projects.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Dự án</a>
-            <!-- LINK KINH NGHIỆM MỚI -->
             <a href="experience.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Kinh nghiệm</a>
         </div>
 
@@ -216,7 +214,6 @@
     <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 md:hidden transition-all">
         <button class="absolute top-8 right-8 text-white text-2xl" onclick="document.getElementById('mobile-menu').classList.add('hidden')">&times;</button>
         <a href="about.html" class="text-2xl font-bold">Giới thiệu</a>
-        <!-- LINK MOBILE -->
         <a href="projects.html" class="text-2xl font-bold">Dự án</a>
         <a href="experience.html" class="text-2xl font-bold">Kinh nghiệm</a>
         <a href="#contact" class="text-2xl font-bold text-primary" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Liên hệ</a>
@@ -225,7 +222,7 @@
     <!-- HERO SECTION -->
     <section id="about" class="relative z-10 pt-40 pb-20 px-6 min-h-screen flex flex-col justify-center">
         <div class="container mx-auto text-center max-w-4xl reveal active">
-            <!-- Badge (Floating Animation) -->
+            <!-- Badge -->
             <div class="animate-float inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-mono mb-8 hover:bg-primary/10 transition cursor-default shadow-[0_0_15px_rgba(102,224,255,0.1)]">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -234,13 +231,13 @@
                 AVAILABLE FOR NEW PROJECTS
             </div>
 
-            <!-- Headline với hiệu ứng chuyển màu động -->
+            <!-- Headline -->
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 drop-shadow-2xl">
                 Kiến tạo trải nghiệm số <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent animate-text text-glow pb-2">Đẳng cấp & Đột phá.</span>
             </h1>
 
-            <!-- Typing Effect cho phần mô tả -->
+            <!-- Typing Effect (Đồng bộ: Nhấn mạnh AI) -->
             <div class="h-8 mb-8 flex justify-center">
                 <p class="text-lg md:text-xl text-gray-300 font-light typing-container px-2">
                     Lập trình viên AI • Tư duy sáng tạo • Giải pháp tối ưu
@@ -248,8 +245,8 @@
             </div>
 
             <p class="text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Tôi là <strong class="text-white">NGUYỄN HOÀNG PHÚC</strong>, Senior Frontend Developer. 
-                Tôi kết hợp tư duy thiết kế tinh tế với kiến trúc phần mềm vững chắc để xây dựng các ứng dụng web có khả năng mở rộng cao.
+                Tôi là <strong class="text-white">NGUYỄN HOÀNG PHÚC</strong>, Senior AI Engineer & Fullstack Developer. 
+                Tôi kết hợp tư duy thiết kế tinh tế với kiến trúc phần mềm vững chắc để xây dựng các giải pháp công nghệ thông minh.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -259,104 +256,102 @@
             </div>
         </div>
 
-        <!-- TECH STACK MARQUEE (Glass Effect) -->
+        <!-- TECH STACK MARQUEE -->
         <div class="mt-24 w-full border-y border-white/5 bg-white/5 backdrop-blur-sm py-8 reveal">
             <div class="marquee-container">
                 <div class="marquee-content">
-                    <!-- Duplicate items for smooth loop -->
-                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"><i class="fab fa-react text-primary"></i> ReactJS</span>
-                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2 hover:drop-shadow-[0_0_10px_rgba(255,255,200,0.5)]"><i class="fab fa-js text-yellow-400"></i> JavaScript</span>
-                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2 hover:drop-shadow-[0_0_10px_rgba(100,255,100,0.5)]"><i class="fab fa-node text-green-500"></i> NodeJS</span>
-                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2 hover:drop-shadow-[0_0_10px_rgba(255,100,200,0.5)]"><i class="fab fa-figma text-pink-500"></i> Figma</span>
-                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2 hover:drop-shadow-[0_0_10px_rgba(100,100,255,0.5)]"><i class="fas fa-database text-blue-400"></i> MongoDB</span>
-                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2 hover:drop-shadow-[0_0_10px_rgba(100,200,255,0.5)]"><i class="fab fa-css3 text-blue-600"></i> Tailwind</span>
-                    <!-- REPEAT -->
+                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-python text-primary"></i> Python</span>
+                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fas fa-brain text-secondary"></i> TensorFlow</span>
                     <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-react text-primary"></i> ReactJS</span>
                     <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-js text-yellow-400"></i> JavaScript</span>
                     <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-node text-green-500"></i> NodeJS</span>
-                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-figma text-pink-500"></i> Figma</span>
                     <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fas fa-database text-blue-400"></i> MongoDB</span>
-                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-css3 text-blue-600"></i> Tailwind</span>
+                    
+                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-python text-primary"></i> Python</span>
+                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fas fa-brain text-secondary"></i> TensorFlow</span>
+                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-react text-primary"></i> ReactJS</span>
+                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-js text-yellow-400"></i> JavaScript</span>
+                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fab fa-node text-green-500"></i> NodeJS</span>
+                    <span class="mx-8 text-2xl font-bold text-gray-400 hover:text-white transition flex items-center gap-2"><i class="fas fa-database text-blue-400"></i> MongoDB</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS SECTION (Preview) -->
+    <!-- PROJECTS SECTION (Đồng bộ với projects.html) -->
     <section id="projects" class="py-24 relative z-10">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between mb-16 reveal">
                 <div>
                     <h2 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">Dự Án Tiêu Biểu</h2>
-                    <p class="text-gray-400">Một số sản phẩm tôi đã thực hiện gần đây.</p>
+                    <p class="text-gray-400">Một số sản phẩm AI và Web App nổi bật.</p>
                 </div>
-                <!-- Link Xem tất cả -->
                 <a href="projects.html" class="hidden md:flex items-center gap-2 text-primary hover:text-white transition">Xem tất cả <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
+                <!-- Project 1: AI (Face Recog - Thay thế NeoShop Dashboard cũ) -->
                 <div class="group relative glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="NeoShop Dashboard">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Face Recognition">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-primary shadow-[0_0_10px_rgba(102,224,255,0.3)]">
-                            E-Commerce
+                        <div class="absolute top-4 right-4 bg-secondary/80 backdrop-blur px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-white shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                            AI Core
                         </div>
                     </div>
                     <div class="p-8 relative">
-                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-primary transition group-hover:drop-shadow-[0_0_8px_rgba(102,224,255,0.8)]">NeoShop Platform</h3>
-                        <p class="text-gray-400 text-sm mb-6 line-clamp-2">Hệ thống thương mại điện tử tích hợp AI gợi ý sản phẩm và thanh toán Crypto.</p>
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-secondary transition group-hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]">Face Recog System</h3>
+                        <p class="text-gray-400 text-sm mb-6 line-clamp-2">Hệ thống điểm danh tự động sử dụng nhận diện khuôn mặt Real-time với độ chính xác 98%.</p>
+                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                            <div class="flex gap-2 text-xl text-gray-500">
+                                <i class="fab fa-python hover:text-white transition hover:scale-110"></i>
+                                <i class="fas fa-brain hover:text-white transition hover:scale-110"></i>
+                            </div>
+                            <a href="projects.html" class="text-sm font-bold text-white hover:text-secondary transition flex items-center gap-1 group/link">Chi tiết <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: NeoShop (Web) -->
+                <div class="group relative glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="NeoShop">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute top-4 right-4 bg-primary/80 backdrop-blur px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-black shadow-[0_0_10px_rgba(102,224,255,0.3)]">
+                            Web App
+                        </div>
+                    </div>
+                    <div class="p-8 relative">
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-primary transition group-hover:drop-shadow-[0_0_8px_rgba(102,224,255,0.8)]">NeoShop E-commerce</h3>
+                        <p class="text-gray-400 text-sm mb-6 line-clamp-2">Nền tảng thương mại điện tử tích hợp gợi ý sản phẩm thông minh bằng AI.</p>
                         <div class="flex items-center justify-between border-t border-white/10 pt-4">
                             <div class="flex gap-2 text-xl text-gray-500">
                                 <i class="fab fa-react hover:text-white transition hover:scale-110"></i>
                                 <i class="fab fa-node-js hover:text-white transition hover:scale-110"></i>
                             </div>
-                            <a href="#" class="text-sm font-bold text-white hover:text-primary transition flex items-center gap-1 group/link">Live Demo <i class="fas fa-external-link-alt text-xs group-hover/link:translate-x-1 transition"></i></a>
+                            <a href="projects.html" class="text-sm font-bold text-white hover:text-primary transition flex items-center gap-1 group/link">Chi tiết <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 3: Mobile -->
                 <div class="group relative glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Project">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Mobile App">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-secondary shadow-[0_0_10px_rgba(168,85,247,0.3)]">
-                            Dashboard
+                        <div class="absolute top-4 right-4 bg-success/80 backdrop-blur px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-black shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                            Mobile
                         </div>
                     </div>
                     <div class="p-8 relative">
-                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-secondary transition group-hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]">Finance Tracker</h3>
-                        <p class="text-gray-400 text-sm mb-6 line-clamp-2">Ứng dụng quản lý tài chính cá nhân với biểu đồ thời gian thực và xuất báo cáo PDF.</p>
-                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
-                            <div class="flex gap-2 text-xl text-gray-500">
-                                <i class="fab fa-vuejs hover:text-white transition hover:scale-110"></i>
-                                <i class="fas fa-chart-pie hover:text-white transition hover:scale-110"></i>
-                            </div>
-                            <a href="#" class="text-sm font-bold text-white hover:text-secondary transition flex items-center gap-1 group/link">Live Demo <i class="fas fa-external-link-alt text-xs group-hover/link:translate-x-1 transition"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="group relative glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Project">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-                        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-green-400 shadow-[0_0_10px_rgba(74,222,128,0.3)]">
-                            Mobile App
-                        </div>
-                    </div>
-                    <div class="p-8 relative">
-                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-green-400 transition group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.8)]">Travel Booking</h3>
+                        <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-success transition group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.8)]">Smart Travel App</h3>
                         <p class="text-gray-400 text-sm mb-6 line-clamp-2">Ứng dụng đặt phòng khách sạn và vé máy bay với giao diện tối ưu cho di động.</p>
                         <div class="flex items-center justify-between border-t border-white/10 pt-4">
                             <div class="flex gap-2 text-xl text-gray-500">
-                                <i class="fab fa-react hover:text-white transition hover:scale-110"></i>
                                 <i class="fab fa-android hover:text-white transition hover:scale-110"></i>
+                                <i class="fas fa-map-marked-alt hover:text-white transition hover:scale-110"></i>
                             </div>
-                            <a href="#" class="text-sm font-bold text-white hover:text-green-400 transition flex items-center gap-1 group/link">Live Demo <i class="fas fa-external-link-alt text-xs group-hover/link:translate-x-1 transition"></i></a>
+                            <a href="projects.html" class="text-sm font-bold text-white hover:text-success transition flex items-center gap-1 group/link">Chi tiết <i class="fas fa-arrow-right text-xs group-hover/link:translate-x-1 transition"></i></a>
                         </div>
                     </div>
                 </div>
@@ -364,9 +359,8 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION (Preview) -->
+    <!-- EXPERIENCE SECTION (Đồng bộ với experience.html) -->
     <section id="experience" class="py-24 relative z-10 overflow-hidden">
-        <!-- Nền Gradient nhẹ cho phần này -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
 
         <div class="container mx-auto px-6 max-w-5xl">
@@ -375,13 +369,12 @@
             </h2>
             
             <div class="text-center mb-16 reveal">
-                <!-- Nút xem chi tiết trỏ về experience.html -->
                 <a href="experience.html" class="inline-flex items-center gap-2 text-primary hover:text-white transition group border border-primary/30 px-6 py-2 rounded-full hover:bg-primary/20">
                     Xem chi tiết lộ trình <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
                 </a>
             </div>
             
-            <!-- Timeline Preview (Simple) -->
+            <!-- Timeline Preview -->
             <div class="relative space-y-12">
                 <!-- Vertical Line -->
                 <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent opacity-30"></div>
@@ -390,7 +383,8 @@
                     <div class="absolute left-6 w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_#66E0FF] z-10 border-2 border-dark"></div>
                     <div class="pl-12">
                         <span class="text-sm text-primary font-mono mb-1 block">Hiện tại</span>
-                        <h3 class="text-xl font-bold text-white">Senior Frontend Developer</h3>
+                        <!-- Đồng bộ chức danh -->
+                        <h3 class="text-xl font-bold text-white">Senior AI Engineer Intern</h3>
                         <p class="text-gray-400 text-sm">ABC Tech Solutions</p>
                     </div>
                 </div>
@@ -399,8 +393,9 @@
                     <div class="absolute left-6 w-4 h-4 bg-secondary rounded-full shadow-[0_0_15px_#A855F7] z-10 border-2 border-dark"></div>
                     <div class="pl-12">
                         <span class="text-sm text-secondary font-mono mb-1 block">2021 - 2023</span>
-                        <h3 class="text-xl font-bold text-white">Web Developer</h3>
-                        <p class="text-gray-400 text-sm">Creative Agency</p>
+                        <!-- Đồng bộ chức danh -->
+                        <h3 class="text-xl font-bold text-white">Fullstack Web Developer</h3>
+                        <p class="text-gray-400 text-sm">Freelance Team</p>
                     </div>
                 </div>
             </div>
