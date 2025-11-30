@@ -196,9 +196,10 @@
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
             <a href="about.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Giới thiệu</a>
-            <!-- Liên kết đến trang Web Phụ (Dự án) -->
+            <!-- LINK DỰ ÁN MỚI -->
             <a href="projects.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Dự án</a>
-            <a href="#experience" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Kinh nghiệm</a>
+            <!-- LINK KINH NGHIỆM MỚI -->
+            <a href="experience.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Kinh nghiệm</a>
         </div>
 
         <a href="#contact" class="hidden md:block bg-white text-black hover:bg-primary hover:text-black transition px-5 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-primary/50 transform hover:-translate-y-0.5 active:translate-y-0">
@@ -215,9 +216,9 @@
     <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 md:hidden transition-all">
         <button class="absolute top-8 right-8 text-white text-2xl" onclick="document.getElementById('mobile-menu').classList.add('hidden')">&times;</button>
         <a href="about.html" class="text-2xl font-bold">Giới thiệu</a>
-        <!-- Liên kết Mobile đến trang Web Phụ (Dự án) -->
+        <!-- LINK MOBILE -->
         <a href="projects.html" class="text-2xl font-bold">Dự án</a>
-        <a href="#experience" class="text-2xl font-bold" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Kinh nghiệm</a>
+        <a href="experience.html" class="text-2xl font-bold">Kinh nghiệm</a>
         <a href="#contact" class="text-2xl font-bold text-primary" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Liên hệ</a>
     </div>
 
@@ -252,7 +253,6 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <!-- Nút Hero liên kết đến trang Web Phụ (Dự án) -->
                 <a href="projects.html" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-primary transition hover:shadow-[0_0_30px_rgba(102,224,255,0.6)] transform hover:-translate-y-1 flex items-center justify-center gap-2">
                     Xem Portfolio <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition"></i>
                 </a>
@@ -282,21 +282,20 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION (Floating Glass Cards) -->
+    <!-- PROJECTS SECTION (Preview) -->
     <section id="projects" class="py-24 relative z-10">
-        <!-- ... (Giữ nguyên nội dung phần Projects) ... -->
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between mb-16 reveal">
                 <div>
                     <h2 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">Dự Án Tiêu Biểu</h2>
                     <p class="text-gray-400">Một số sản phẩm tôi đã thực hiện gần đây.</p>
                 </div>
-                <!-- Liên kết Xem tất cả đến trang Web Phụ (Dự án) -->
+                <!-- Link Xem tất cả -->
                 <a href="projects.html" class="hidden md:flex items-center gap-2 text-primary hover:text-white transition">Xem tất cả <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 (Glass Card Effect) -->
+                <!-- Project 1 -->
                 <div class="group relative glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="NeoShop Dashboard">
@@ -318,7 +317,7 @@
                     </div>
                 </div>
 
-                <!-- Project 2 (Glass Card Effect) -->
+                <!-- Project 2 -->
                 <div class="group relative glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Project">
@@ -340,7 +339,7 @@
                     </div>
                 </div>
 
-                <!-- Project 3 (Glass Card Effect) -->
+                <!-- Project 3 -->
                 <div class="group relative glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Project">
@@ -365,121 +364,45 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION (Timeline Style) - PHẦN NÂNG CẤP -->
+    <!-- EXPERIENCE SECTION (Preview) -->
     <section id="experience" class="py-24 relative z-10 overflow-hidden">
         <!-- Nền Gradient nhẹ cho phần này -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
 
         <div class="container mx-auto px-6 max-w-5xl">
-            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center reveal drop-shadow-md">
+            <h2 class="text-3xl md:text-5xl font-bold mb-10 text-center reveal drop-shadow-md">
                 <span class="border-b-4 border-primary/50 pb-2">Hành Trình Sự Nghiệp</span>
             </h2>
             
-            <div class="relative space-y-16">
-                <!-- Đường kẻ dọc trung tâm -->
-                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent -translate-x-1/2 md:translate-x-0 opacity-30"></div>
+            <div class="text-center mb-16 reveal">
+                <!-- Nút xem chi tiết trỏ về experience.html -->
+                <a href="experience.html" class="inline-flex items-center gap-2 text-primary hover:text-white transition group border border-primary/30 px-6 py-2 rounded-full hover:bg-primary/20">
+                    Xem chi tiết lộ trình <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
+                </a>
+            </div>
+            
+            <!-- Timeline Preview (Simple) -->
+            <div class="relative space-y-12">
+                <!-- Vertical Line -->
+                <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent opacity-30"></div>
 
-                <!-- Timeline Item 1 (Phải trên Desktop) -->
-                <div class="relative flex flex-col md:flex-row gap-8 items-center reveal group">
-                    <!-- Dot Mốc thời gian -->
-                    <div class="absolute left-4 md:left-1/2 w-5 h-5 bg-primary rounded-full -translate-x-1/2 shadow-[0_0_20px_#66E0FF] z-10 group-hover:scale-125 transition duration-500 border-4 border-dark"></div>
-                    
-                    <!-- Thời gian (Trái trên Desktop) -->
-                    <div class="md:w-1/2 md:text-right pl-12 md:pl-0 md:pr-16 w-full">
-                        <span class="inline-block px-5 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary font-mono text-sm font-bold shadow-[0_0_15px_rgba(102,224,255,0.2)]">
-                            2023 — Nay
-                        </span>
-                    </div>
-
-                    <!-- Nội dung (Phải trên Desktop) -->
-                    <div class="md:w-1/2 pl-12 md:pl-16 w-full">
-                        <div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-primary/50 transition duration-300 relative group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(102,224,255,0.15)]">
-                            <!-- Mũi tên chỉ hướng cho Desktop -->
-                            <div class="hidden md:block absolute top-1/2 -left-3 w-6 h-6 bg-card border-l border-b border-white/10 transform rotate-45 -translate-y-1/2 group-hover:border-primary/50 transition duration-300"></div>
-                            
-                            <h3 class="text-2xl font-bold text-white group-hover:text-primary transition mb-1">Senior Frontend Dev</h3>
-                            <p class="text-sm text-gray-400 mb-4 font-mono flex items-center gap-2"><i class="fas fa-building"></i> ABC Tech Solutions</p>
-                            
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                                Chịu trách nhiệm chính về kiến trúc Frontend cho sản phẩm SaaS. Tối ưu hóa Core Web Vitals tăng 40% hiệu suất. Mentor cho 3 Junior Developers.
-                            </p>
-                            
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-lg bg-primary/10 text-xs font-bold text-primary border border-primary/20">React</span>
-                                <span class="px-3 py-1 rounded-lg bg-primary/10 text-xs font-bold text-primary border border-primary/20">TypeScript</span>
-                                <span class="px-3 py-1 rounded-lg bg-primary/10 text-xs font-bold text-primary border border-primary/20">Next.js</span>
-                            </div>
-                        </div>
+                <div class="relative flex gap-8 items-center reveal group ml-2">
+                    <div class="absolute left-6 w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_#66E0FF] z-10 border-2 border-dark"></div>
+                    <div class="pl-12">
+                        <span class="text-sm text-primary font-mono mb-1 block">Hiện tại</span>
+                        <h3 class="text-xl font-bold text-white">Senior Frontend Developer</h3>
+                        <p class="text-gray-400 text-sm">ABC Tech Solutions</p>
                     </div>
                 </div>
 
-                <!-- Timeline Item 2 (Trái trên Desktop) -->
-                <div class="relative flex flex-col md:flex-row-reverse gap-8 items-center reveal group delay-100">
-                    <!-- Dot Mốc thời gian -->
-                    <div class="absolute left-4 md:left-1/2 w-5 h-5 bg-secondary rounded-full -translate-x-1/2 shadow-[0_0_20px_#A855F7] z-10 group-hover:scale-125 transition duration-500 border-4 border-dark"></div>
-                    
-                    <!-- Thời gian (Phải trên Desktop) -->
-                    <div class="md:w-1/2 md:text-left pl-12 md:pl-16 w-full">
-                        <span class="inline-block px-5 py-2 rounded-full bg-secondary/10 border border-secondary/30 text-secondary font-mono text-sm font-bold shadow-[0_0_15px_rgba(168,85,247,0.2)]">
-                            2021 — 2023
-                        </span>
-                    </div>
-
-                    <!-- Nội dung (Trái trên Desktop) -->
-                    <div class="md:w-1/2 pl-12 md:pl-0 md:pr-16 w-full">
-                        <div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-secondary/50 transition duration-300 relative group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(168,85,247,0.15)] md:text-right">
-                            <!-- Mũi tên chỉ hướng cho Desktop -->
-                            <div class="hidden md:block absolute top-1/2 -right-3 w-6 h-6 bg-card border-r border-t border-white/10 transform rotate-45 -translate-y-1/2 group-hover:border-secondary/50 transition duration-300"></div>
-
-                            <h3 class="text-2xl font-bold text-white group-hover:text-secondary transition mb-1">Web Developer</h3>
-                            <div class="text-sm text-gray-400 mb-4 font-mono flex items-center justify-start md:justify-end gap-2">Creative Agency <i class="fas fa-layer-group"></i></div>
-                            
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                                Xây dựng hơn 20 Landing Page cho các chiến dịch Marketing lớn. Làm việc trực tiếp với Designer để đảm bảo tính thẩm mỹ Pixel-perfect.
-                            </p>
-                            
-                            <div class="flex flex-wrap gap-2 md:justify-end">
-                                <span class="px-3 py-1 rounded-lg bg-secondary/10 text-xs font-bold text-secondary border border-secondary/20">HTML/CSS</span>
-                                <span class="px-3 py-1 rounded-lg bg-secondary/10 text-xs font-bold text-secondary border border-secondary/20">JavaScript</span>
-                                <span class="px-3 py-1 rounded-lg bg-secondary/10 text-xs font-bold text-secondary border border-secondary/20">GSAP</span>
-                            </div>
-                        </div>
+                <div class="relative flex gap-8 items-center reveal group ml-2">
+                    <div class="absolute left-6 w-4 h-4 bg-secondary rounded-full shadow-[0_0_15px_#A855F7] z-10 border-2 border-dark"></div>
+                    <div class="pl-12">
+                        <span class="text-sm text-secondary font-mono mb-1 block">2021 - 2023</span>
+                        <h3 class="text-xl font-bold text-white">Web Developer</h3>
+                        <p class="text-gray-400 text-sm">Creative Agency</p>
                     </div>
                 </div>
-
-                <!-- Timeline Item 3 (Phải trên Desktop - Thêm mới để cân đối) -->
-                <div class="relative flex flex-col md:flex-row gap-8 items-center reveal group delay-200">
-                    <!-- Dot Mốc thời gian -->
-                    <div class="absolute left-4 md:left-1/2 w-5 h-5 bg-accent rounded-full -translate-x-1/2 shadow-[0_0_20px_#F472B6] z-10 group-hover:scale-125 transition duration-500 border-4 border-dark"></div>
-                    
-                    <!-- Thời gian -->
-                    <div class="md:w-1/2 md:text-right pl-12 md:pl-0 md:pr-16 w-full">
-                        <span class="inline-block px-5 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent font-mono text-sm font-bold shadow-[0_0_15px_rgba(244,114,182,0.2)]">
-                            2020 — 2021
-                        </span>
-                    </div>
-
-                    <!-- Nội dung -->
-                    <div class="md:w-1/2 pl-12 md:pl-16 w-full">
-                        <div class="glass-card p-8 rounded-3xl border border-white/5 hover:border-accent/50 transition duration-300 relative group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(244,114,182,0.15)]">
-                            <!-- Mũi tên -->
-                            <div class="hidden md:block absolute top-1/2 -left-3 w-6 h-6 bg-card border-l border-b border-white/10 transform rotate-45 -translate-y-1/2 group-hover:border-accent/50 transition duration-300"></div>
-                            
-                            <h3 class="text-2xl font-bold text-white group-hover:text-accent transition mb-1">Freelancer UI/UX</h3>
-                            <p class="text-sm text-gray-400 mb-4 font-mono flex items-center gap-2"><i class="fas fa-laptop-house"></i> Tự do</p>
-                            
-                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                                Thiết kế giao diện người dùng cho các dự án khởi nghiệp nhỏ. Tập trung vào trải nghiệm người dùng và thiết kế responsive.
-                            </p>
-                            
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-lg bg-accent/10 text-xs font-bold text-accent border border-accent/20">Figma</span>
-                                <span class="px-3 py-1 rounded-lg bg-accent/10 text-xs font-bold text-accent border border-accent/20">Photoshop</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
