@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,34 +19,46 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['"Outfit"', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        dark: '#0B0C10',
-                        card: 'rgba(255, 255, 255, 0.03)', 
-                        primary: '#66E0FF', 
-                        secondary: '#A855F7', 
-                        success: '#10B981',
-                        accent: '#F472B6', // Pink
+                        dark: '#050505',
+                        card: 'rgba(255, 255, 255, 0.02)', 
+                        primary: '#00F0FF', /* Neon Cyan */
+                        secondary: '#7000FF', /* Neon Purple */
+                        success: '#00FF94', /* Neon Green */
+                        accent: '#FF0055', /* Neon Pink */
                     },
                     backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+                        'grid-pattern': "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'blob': 'blob 7s infinite',
+                        'float-slow': 'float 10s ease-in-out infinite',
+                        'blob': 'blob 10s infinite',
+                        'shimmer': 'shimmer 2.5s linear infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-15px) rotate(2deg)' },
                         },
                         blob: {
                             '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '33%': { transform: 'translate(30px, -30px) scale(1.1)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(0,240,255,0.2)' },
+                            '100%': { boxShadow: '0 0 20px rgba(0,240,255,0.6), 0 0 10px rgba(0,240,255,0.4)' },
                         }
                     }
                 }
@@ -54,264 +66,336 @@
         }
     </script>
     <style>
-        body { background-color: #0B0C10; color: #E2E8F0; overflow-x: hidden; }
+        body { background-color: #050505; color: #E2E8F0; overflow-x: hidden; }
+        
+        /* High-End Glassmorphism with Spotlight Support */
         .glass-card {
-            background: rgba(20, 20, 25, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(15, 15, 20, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            /* Variables for spotlight */
+            --mouse-x: 50%;
+            --mouse-y: 50%;
         }
+        
+        /* Spotlight Effect Overlay */
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(
+                800px circle at var(--mouse-x) var(--mouse-y),
+                rgba(255, 255, 255, 0.06),
+                transparent 40%
+            );
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Ensure content is above spotlight */
+        .glass-card > * {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Shimmer Border */
+        .glass-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 4;
+        }
+
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.1);
         }
+
+        /* CLICK ANIMATION */
+        .glass-card:active, button:active, a.px-5:active {
+            transform: scale(0.98);
+        }
+
+        /* Ripple Animation CSS */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 240, 255, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+            z-index: 5;
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
         .bg-grid {
-            background-size: 40px 40px;
-            mask-image: linear-gradient(to bottom, transparent, 10%, black, 90%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, 5%, black, 95%, transparent);
+            background-size: 50px 50px;
+            mask-image: linear-gradient(to bottom, transparent, 5%, black, 95%, transparent);
         }
+        
         .reveal {
             opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Text Gradient Animation */
+        .animate-text {
+            background-size: 200% auto;
+            animation: textFlow 5s linear infinite;
+        }
+        @keyframes textFlow {
+            to { background-position: 200% center; }
+        }
+
+        /* Background Floating Icons */
+        .floating-icon {
+            position: absolute;
+            opacity: 0.05;
+            color: white;
+            animation: float 10s ease-in-out infinite;
+            z-index: 0;
+        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
 
-    <!-- BACKGROUND -->
+    <!-- BACKGROUND LAYERS -->
     <div class="fixed inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('image_1cc379.png');"></div>
-        <div class="absolute inset-0 bg-black/85"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 mix-blend-overlay" style="background-image: url('image_1cc379.png');"></div>
+        <div class="absolute inset-0 bg-dark/95"></div>
+        <div class="absolute inset-0 bg-noise opacity-30 mix-blend-overlay"></div>
         
-        <!-- Animated Blobs -->
-        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div class="absolute bottom-0 right-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <!-- Vibrant Animated Blobs -->
+        <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-secondary/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-primary/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-accent/10 rounded-full mix-blend-screen filter blur-[80px] animate-blob animation-delay-4000"></div>
         
-        <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] bg-grid"></div>
+        <!-- Floating Tech Icons for Background Liveliness -->
+        <i class="fas fa-code floating-icon text-6xl top-20 left-10" style="animation-delay: 0s;"></i>
+        <i class="fas fa-brain floating-icon text-8xl bottom-40 left-20" style="animation-delay: 2s;"></i>
+        <i class="fab fa-react floating-icon text-7xl top-40 right-20" style="animation-delay: 4s;"></i>
+        <i class="fas fa-database floating-icon text-6xl bottom-20 right-10" style="animation-delay: 1s;"></i>
+        
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.05] bg-grid"></div>
     </div>
 
     <!-- NAV -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl flex justify-between items-center transition-all duration-300 hover:border-white/20" id="navbar">
-        <a href="index.html" class="font-bold text-lg tracking-tight flex items-center gap-2 text-white hover:text-primary transition">
-            <i class="fas fa-arrow-left text-sm"></i> Trang chủ
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl bg-black/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl flex justify-between items-center transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_20px_rgba(0,240,255,0.2)]" id="navbar">
+        <a href="index.html" class="font-bold text-lg tracking-tight flex items-center gap-2 text-white hover:text-primary transition group">
+            <i class="fas fa-arrow-left text-sm group-hover:-translate-x-1 transition-transform duration-300"></i> TRANG CHỦ
         </a>
         <div class="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5">
-            <span class="px-4 py-1.5 text-sm font-medium text-white bg-white/10 rounded-full cursor-default">Giới thiệu</span>
-            <a href="projects.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Dự án</a>
-            <a href="experience.html" class="px-4 py-1.5 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition">Kinh nghiệm</a>
+            <span class="px-5 py-2 text-sm font-bold text-white bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full cursor-default border border-primary/30 shadow-[0_0_15px_rgba(0,240,255,0.2)]">Giới thiệu</span>
+            <a href="projects.html" class="px-5 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition duration-300">Dự án</a>
+            <a href="experience.html" class="px-5 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition duration-300">Kinh nghiệm</a>
         </div>
-        <a href="index.html#contact" class="hidden md:block bg-white text-black hover:bg-primary hover:text-black transition px-5 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-primary/50 transform hover:-translate-y-0.5">
+        <a href="index.html#contact" class="hidden md:block bg-white text-black hover:bg-primary hover:text-black transition px-6 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-primary/50 transform hover:-translate-y-0.5 active:scale-95 duration-300">
             Hợp tác
         </a>
     </nav>
 
     <!-- MAIN CONTENT -->
-    <section class="relative z-10 pt-40 pb-20 px-6">
-        <div class="container mx-auto max-w-4xl relative">
+    <section class="relative z-10 pt-44 pb-20 px-6">
+        <div class="container mx-auto max-w-5xl relative">
             
             <!-- Header Banner Area -->
-            <div class="text-center mb-16 reveal active relative">
-                <span class="text-primary font-mono text-sm tracking-widest uppercase mb-3 block border border-primary/30 inline-block px-4 py-1 rounded-full bg-primary/5">
-                    AI DEVELOPER PORTFOLIO
-                </span>
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 drop-shadow-lg">
-                    Nguyễn Hoàng Phúc
+            <div class="text-center mb-20 reveal active relative">
+                <div class="inline-block relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <span class="relative px-6 py-2 bg-black rounded-full border border-white/10 text-primary font-mono text-xs tracking-[0.3em] uppercase block">
+                        AI DEVELOPER PORTFOLIO
+                    </span>
+                </div>
+                
+                <h1 class="text-5xl md:text-8xl font-black mb-8 mt-8 text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-secondary animate-text drop-shadow-[0_0_30px_rgba(0,240,255,0.3)]">
+                    NGUYỄN HOÀNG PHÚC
                 </h1>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed font-light">
-                    Sinh viên chuyên ngành <strong class="text-white">Công nghệ Thông tin</strong> với định hướng chuyên sâu về <strong class="text-primary">Trí tuệ Nhân tạo</strong>. 
-                    Tôi khao khát vận dụng tư duy thuật toán và công nghệ học máy để kiến tạo những giải pháp thông minh, giải quyết các thách thức thực tiễn trong kỷ nguyên số.
+                
+                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+                    Sinh viên <strong class="text-white">Công nghệ Thông tin</strong> | Chuyên sâu <strong class="text-primary drop-shadow-[0_0_10px_rgba(0,240,255,0.8)]">Artificial Intelligence</strong>
+                    <br>
+                    <span class="text-sm text-gray-400 mt-2 block font-mono">"Kiến tạo giải pháp thông minh cho tương lai số"</span>
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-start">
                 <!-- Left: Bio -->
-                <div class="glass-card p-8 rounded-3xl reveal space-y-6">
+                <div class="glass-card p-8 rounded-[2rem] reveal space-y-8 border-t-4 border-t-primary/50">
                     <!-- Profile Image -->
-                    <div class="relative w-64 h-64 mx-auto mb-8 animate-float">
-                        <div class="absolute inset-0 bg-primary/10 rounded-full blur-2xl"></div>
-                        <img src="https://scontent.fbmv1-1.fna.fbcdn.net/v/t39.30808-6/500276418_1203557381717097_7199059158045401724_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHXB0_j3A_PpEyfNpuVmOMn7HFqRdAj7aPscWpF0CPtox4CIQkOdopC4pgpCRdbIttDbpAi7b1BcVpdFOOaTEjI&_nc_ohc=sVSyJBNhY9YQ7kNvwH0hAFJ&_nc_oc=Adm95P3xuFMPW7wjeYnkQ3VmRRhl2NneTdXxdp00h0f21QW1YyeiSmCKf8Y1MIRRdf0&_nc_zt=23&_nc_ht=scontent.fbmv1-1.fna&_nc_gid=F8O1Z74T0zRLbeoWDD7dRA&oh=00_AfiRlHjU7qzgD21XyhBoe16P83NAiUQg26_LmYMwByrPtA&oe=6931BBF8" alt="Nguyễn Hoàng Phúc" class="relative w-full h-full rounded-full object-cover border-4 border-white/10 shadow-xl">
+                    <div class="relative w-64 h-64 mx-auto mb-10 group cursor-pointer">
+                        <!-- Glow effect behind image -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full blur-[60px] opacity-40 group-hover:opacity-70 transition duration-500 animate-pulse"></div>
+                        
+                        <!-- Image Container with animated border -->
+                        <div class="relative w-full h-full rounded-full p-[3px] bg-gradient-to-r from-primary via-white to-secondary animate-spin-slow">
+                            <div class="w-full h-full rounded-full bg-dark overflow-hidden relative">
+                                <img src="https://scontent.fbmv1-1.fna.fbcdn.net/v/t39.30808-6/500276418_1203557381717097_7199059158045401724_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHXB0_j3A_PpEyfNpuVmOMn7HFqRdAj7aPscWpF0CPtox4CIQkOdopC4pgpCRdbIttDbpAi7b1BcVpdFOOaTEjI&_nc_ohc=sVSyJBNhY9YQ7kNvwH0hAFJ&_nc_oc=Adm95P3xuFMPW7wjeYnkQ3VmRRhl2NneTdXxdp00h0f21QW1YyeiSmCKf8Y1MIRRdf0&_nc_zt=23&_nc_ht=scontent.fbmv1-1.fna&_nc_gid=F8O1Z74T0zRLbeoWDD7dRA&oh=00_AfiRlHjU7qzgD21XyhBoe16P83NAiUQg26_LmYMwByrPtA&oe=6931BBF8" alt="Nguyễn Hoàng Phúc" class="w-full h-full object-cover hover:scale-110 transition duration-700">
+                            </div>
+                        </div>
                     </div>
 
-                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
-                        <i class="fas fa-id-card text-secondary"></i> Thông tin cá nhân
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-4 pb-4 border-b border-white/5">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-blue-500/20 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        Thông tin cá nhân
                     </h2>
                     
-                    <!-- Thông tin dạng lưới gọn gàng -->
-                    <div class="grid grid-cols-1 gap-4">
-                        <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
-                            <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition">
-                                <i class="fas fa-user"></i>
+                    <!-- Info Grid Enhanced (Đã bỏ Status Online) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Item 1: Họ tên -->
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-primary/5 hover:border-primary/40">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-user text-primary text-xl"></i>
+                                <span class="font-bold text-gray-400 text-xs uppercase tracking-wider">Họ và tên</span>
                             </div>
-                            <div>
-                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Họ và tên</p>
-                                <p class="text-white font-bold text-lg">Nguyễn Hoàng Phúc</p>
-                            </div>
+                            <div class="text-lg font-bold text-white">Nguyễn Hoàng Phúc</div>
                         </div>
 
-                        <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
-                            <div class="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary group-hover:scale-110 transition">
-                                <i class="fas fa-birthday-cake"></i>
+                        <!-- Item 2: Ngày sinh -->
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-accent/5 hover:border-accent/40">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-birthday-cake text-accent text-xl"></i>
+                                <span class="font-bold text-gray-400 text-xs uppercase tracking-wider">Ngày sinh</span>
                             </div>
-                            <div>
-                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Ngày sinh</p>
-                                <p class="text-white font-bold text-lg">24/03/2007</p>
-                            </div>
+                            <div class="text-lg font-bold text-white">24/03/2007</div>
                         </div>
 
-                        <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
-                            <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center text-success group-hover:scale-110 transition">
-                                <i class="fas fa-id-badge"></i>
+                        <!-- Item 3: MSSV -->
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-success/5 hover:border-success/40">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-fingerprint text-success text-xl"></i>
+                                <span class="font-bold text-gray-400 text-xs uppercase tracking-wider">Mã sinh viên</span>
                             </div>
-                            <div>
-                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Mã sinh viên</p>
-                                <p class="text-white font-bold text-lg">PK04431</p>
-                            </div>
+                            <div class="text-lg font-bold text-white font-mono tracking-widest">PK04431</div>
                         </div>
-                        
-                        <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
-                            <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-500 group-hover:scale-110 transition">
-                                <i class="fas fa-layer-group"></i>
+
+                        <!-- Item 4: Khóa học -->
+                        <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-secondary/5 hover:border-secondary/40">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-layer-group text-secondary text-xl"></i>
+                                <span class="font-bold text-gray-400 text-xs uppercase tracking-wider">Khóa học</span>
                             </div>
-                            <div>
-                                <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Khóa học</p>
-                                <p class="text-white font-bold text-lg">K21 - FPT Polytechnic</p>
-                            </div>
+                            <div class="text-lg font-bold text-white">K21 - FPT</div>
                         </div>
                     </div>
-
-                    <p class="text-gray-400 text-sm italic mt-6 leading-relaxed border-t border-white/10 pt-4 text-center">
-                        "Đam mê khám phá sức mạnh của AI và kiến tạo những giải pháp công nghệ mang tính ứng dụng cao."
-                    </p>
                 </div>
 
-                <!-- Right: Education & Stats -->
-                <div class="space-y-8 reveal">
-                    <!-- Education Card -->
-                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition"></div>
-                        
-                        <!-- Logo FPT -->
-                        <div class="mb-8 flex justify-center">
-                            <div class="bg-white p-4 rounded-2xl shadow-2xl transform group-hover:scale-105 transition duration-500">
+                <!-- Right: Education & Skills -->
+                <div class="space-y-8 reveal delay-100">
+                    <!-- Education Card (Đã bỏ tích xanh) -->
+                    <div class="glass-card p-8 rounded-[2rem] relative group border-t-4 border-t-secondary/50">
+                        <!-- FPT Logo Hero -->
+                        <div class="mb-10 flex justify-center relative">
+                            <div class="absolute inset-0 bg-orange-500 blur-[80px] opacity-20 rounded-full animate-pulse"></div>
+                            <div class="bg-white p-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform group-hover:scale-105 transition duration-500 border border-white/20 relative z-10">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" alt="Logo FPT Polytechnic" class="h-20 w-auto object-contain">
                             </div>
                         </div>
 
-                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
-                            <i class="fas fa-university text-primary"></i> Học vấn
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-4 pb-4 border-b border-white/5">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            Học vấn
                         </h2>
                         
-                        <!-- Thông tin Học vấn dạng lưới -->
-                        <div class="grid grid-cols-1 gap-4">
-                            <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
-                                <div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:scale-110 transition">
-                                    <i class="fas fa-school"></i>
+                        <!-- Education List -->
+                        <div class="space-y-4">
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-orange-500/40 hover:bg-orange-500/5">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-xs text-orange-400 font-bold uppercase tracking-wider">Trường đào tạo</span>
                                 </div>
-                                <div>
-                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Trường đào tạo</p>
-                                    <p class="text-white font-bold text-lg">FPT Polytechnic Tây Nguyên</p>
-                                </div>
+                                <div class="text-lg font-bold text-white">FPT Polytechnic Tây Nguyên</div>
                             </div>
 
-                            <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
-                                <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-500 group-hover:scale-110 transition">
-                                    <i class="fas fa-brain"></i>
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-blue-500/40 hover:bg-blue-500/5">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">Chuyên ngành</span>
                                 </div>
-                                <div>
-                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Chuyên ngành chính</p>
-                                    <p class="text-white font-bold text-lg">Lập trình ứng dụng AI</p>
-                                </div>
+                                <div class="text-lg font-bold text-white">Lập trình ứng dụng AI</div>
                             </div>
 
-                            <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
-                                <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-500 group-hover:scale-110 transition">
-                                    <i class="fas fa-book-reader"></i>
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/40 hover:bg-purple-500/5">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-xs text-purple-400 font-bold uppercase tracking-wider">Triết lý</span>
                                 </div>
-                                <div>
-                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Triết lý đào tạo</p>
-                                    <p class="text-white font-bold text-lg">Thực học - Thực nghiệp</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-4 bg-white/5 p-3 rounded-xl border border-white/5 hover:border-white/20 transition group">
-                                <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-500 group-hover:scale-110 transition">
-                                    <i class="fas fa-microchip"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Trọng tâm nghiên cứu</p>
-                                    <p class="text-white font-bold text-sm">Machine Learning, Deep Learning</p>
-                                </div>
+                                <div class="text-lg font-bold text-white">Thực học - Thực nghiệp</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Kỹ năng & Công nghệ (Cards) -->
-                    <div class="glass-card p-8 rounded-3xl mt-8">
-                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
-                            <i class="fas fa-laptop-code text-success"></i> Kỹ năng & Công nghệ
+                    <!-- Skills Card -->
+                    <div class="glass-card p-8 rounded-[2rem] mt-8 border-t-4 border-t-success/50">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-4 pb-4 border-b border-white/5">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-success/20 to-emerald-500/20 flex items-center justify-center text-success shadow-[0_0_15px_rgba(0,255,148,0.1)]">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            Kỹ năng & Công nghệ
                         </h2>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Nhóm 1: Ngôn ngữ -->
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 transition group hover:-translate-y-1">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-500 group-hover:scale-110 transition">
-                                        <i class="fab fa-python"></i>
-                                    </div>
-                                    <h3 class="font-bold text-white">Ngôn ngữ</h3>
+                            <!-- Tech Item 1 -->
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-primary/10 hover:border-primary/30">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i class="fab fa-python text-yellow-400 text-xl"></i>
+                                    <span class="font-bold text-white">Ngôn ngữ</span>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">Python</span>
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">C++</span>
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">JS</span>
-                                </div>
+                                <div class="text-xs text-gray-400">Python, C++, JS</div>
                             </div>
 
-                            <!-- Nhóm 2: AI Core -->
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 transition group hover:-translate-y-1">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:scale-110 transition">
-                                        <i class="fas fa-brain"></i>
-                                    </div>
-                                    <h3 class="font-bold text-white">AI Core</h3>
+                            <!-- Tech Item 2 -->
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-secondary/10 hover:border-secondary/30">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i class="fas fa-brain text-secondary text-xl"></i>
+                                    <span class="font-bold text-white">AI Core</span>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">TensorFlow</span>
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">PyTorch</span>
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">OpenCV</span>
-                                </div>
+                                <div class="text-xs text-gray-400">TensorFlow, PyTorch</div>
                             </div>
 
-                            <!-- Nhóm 3: Data -->
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 transition group hover:-translate-y-1">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-500 group-hover:scale-110 transition">
-                                        <i class="fas fa-chart-bar"></i>
-                                    </div>
-                                    <h3 class="font-bold text-white">Dữ liệu</h3>
+                            <!-- Tech Item 3 -->
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-blue-500/10 hover:border-blue-500/30">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i class="fas fa-database text-blue-400 text-xl"></i>
+                                    <span class="font-bold text-white">Dữ liệu</span>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">Pandas</span>
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">NumPy</span>
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">SQL</span>
-                                </div>
+                                <div class="text-xs text-gray-400">Pandas, NumPy, SQL</div>
                             </div>
 
-                            <!-- Nhóm 4: Công cụ -->
-                            <div class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 transition group hover:-translate-y-1">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-gray-500/20 flex items-center justify-center text-gray-400 group-hover:scale-110 transition">
-                                        <i class="fas fa-tools"></i>
-                                    </div>
-                                    <h3 class="font-bold text-white">Công cụ</h3>
+                            <!-- Tech Item 4 -->
+                            <div class="glass-card p-4 rounded-xl border border-white/5 hover:bg-white/10 hover:border-white/30">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i class="fas fa-tools text-gray-300 text-xl"></i>
+                                    <span class="font-bold text-white">Công cụ</span>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">Git</span>
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">VS Code</span>
-                                    <span class="text-xs px-2 py-1 bg-white/10 rounded text-gray-300 border border-white/5">Docker</span>
-                                </div>
+                                <div class="text-xs text-gray-400">Git, Docker, VS Code</div>
                             </div>
                         </div>
                     </div>
@@ -319,13 +403,14 @@
             </div>
 
             <!-- Call to Action -->
-            <div class="mt-20 text-center reveal">
-                <h3 class="text-2xl font-bold text-white mb-6">Bạn muốn hợp tác cùng tôi?</h3>
-                <div class="flex justify-center gap-4">
-                    <a href="index.html#contact" class="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-primary transition hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/50">
-                        Liên hệ ngay
+            <div class="mt-24 text-center reveal delay-200">
+                <h3 class="text-2xl font-bold text-white mb-8">Sẵn sàng hợp tác cùng tôi?</h3>
+                <div class="flex justify-center gap-6">
+                    <a href="index.html#contact" class="px-10 py-4 bg-white text-black font-bold rounded-2xl hover:bg-primary hover:text-black transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] flex items-center gap-2 group">
+                        <span>Liên hệ ngay</span>
+                        <i class="fas fa-paper-plane group-hover:translate-x-1 transition"></i>
                     </a>
-                    <a href="index.html" class="px-8 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition">
+                    <a href="index.html" class="px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 hover:border-white/40 transition-all duration-300 hover:-translate-y-2">
                         Về trang chủ
                     </a>
                 </div>
@@ -335,7 +420,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-8 border-t border-white/10 text-center text-gray-500 text-sm relative z-10 font-mono bg-black/80">
+    <footer class="py-10 border-t border-white/10 text-center text-gray-500 text-sm relative z-10 font-mono bg-black/90 backdrop-blur-md">
         <p>&copy; 2025 NGUYỄN HOÀNG PHÚC. All Rights Reserved.</p>
     </footer>
 
@@ -347,6 +432,40 @@
             });
         });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Add ripple effect listener
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('.glass-card, button, a');
+            if (target) {
+                const circle = document.createElement('span');
+                const diameter = Math.max(target.clientWidth, target.clientHeight);
+                const radius = diameter / 2;
+                
+                const rect = target.getBoundingClientRect();
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${e.clientX - rect.left - radius}px`;
+                circle.style.top = `${e.clientY - rect.top - radius}px`;
+                circle.classList.add('ripple');
+                
+                const ripple = target.getElementsByClassName('ripple')[0];
+                if (ripple) {
+                    ripple.remove();
+                }
+                
+                target.appendChild(circle);
+            }
+        });
+
+        // Spotlight Logic for Cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
     </script>
 </body>
 </html>
